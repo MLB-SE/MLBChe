@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>NewtonSimpson.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">gen (Jan 7, 2018 7:16:19 AM)</a> &gt; <a href="../../index.html" class="el_group">Test</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">NewtonSimpson.java</span></div><h1>NewtonSimpson.java</h1><pre class="source lang-java linenums">/*
+* Solving an integral (equal to a constant) for an unknown bound 
+* Uses Composite Simpson's rule to approximate for the integral and
+* Newton to find the zero
+*/
+
+<span class="nc" id="L7">public class NewtonSimpson {</span>
+
+
+<span class="nc" id="L10">	public static double pi= Math.PI;</span>
+<span class="nc" id="L11">	public static double e = Math.E;</span>
+	
+	public static double myFunct(double p){
+		// takes the value of pn and puts it through function
+		// returns value of the function
+		
+		//function
+<span class="nc" id="L18">		double myFunct = simpson(0, p, 20) - 0.45; </span>
+		
+		
+		//System.out.println(myFunct);
+<span class="nc" id="L22">		return myFunct;</span>
+		
+		
+	}
+	
+	public static double simpson(double a, double b, int n){ 
+<span class="nc" id="L28">		double h = (b-a)/n;</span>
+<span class="nc" id="L29">		double sum_1 = 0;</span>
+<span class="nc" id="L30">		double sum_2 = 0;</span>
+		
+<span class="nc bnc" id="L32" title="All 2 branches missed.">		for (int j = 1; j &lt; n/2; j++){</span>
+<span class="nc" id="L33">			sum_1 += myFunctDeriv(( 2*j*h) + a);</span>
+		}
+		
+<span class="nc bnc" id="L36" title="All 2 branches missed.">		for (int j = 1; j &lt; n/2 + 1 ; j++){</span>
+<span class="nc" id="L37">			sum_2 += myFunctDeriv( a + ( 2*j - 1) *h);</span>
+		}
+		
+<span class="nc" id="L40">		double answer = (h/3)*(myFunctDeriv(a) + 2*sum_1 + 4*sum_2 + myFunctDeriv(b));</span>
+			
+				
+<span class="nc" id="L43">		return answer;</span>
+	
+	}
+
+	public static double myFunctDeriv(double p){
+		// takes value of p returns derivative value
+		
+		//function 1
+<span class="nc" id="L51">		double myFunctDeriv = (1/(Math.sqrt(2*pi)))*Math.pow(e, -Math.pow(p, 2)/2);; </span>
+		
+		/* another possible function
+		 * double myFunctDeriv= (-1000.0/(p*p))*(1-Math.pow((1+p),-360)) + (1000.0/p)*(360/Math.pow((1+p),361));
+		 */
+		
+		//System.out.println(myFunctDeriv);
+		
+<span class="nc" id="L59">		return myFunctDeriv;</span>
+		
+	}
+	
+	public static double newton(double p, double epsilon){ // method pointers suck in java
+
+		double pPrev; 
+		
+		//this do-while loop evaluates the condition at the end
+		
+<span class="nc bnc" id="L69" title="All 2 branches missed.">		do{</span>
+<span class="nc" id="L70">			pPrev = p; //sets current p to pPrev (will update current p in next line)</span>
+<span class="nc" id="L71">			p = p-(myFunct(p)/myFunctDeriv(p)); //updating PsubN</span>
+			//System.out.println(p);
+<span class="nc" id="L73">		} while (Math.abs(p-pPrev) &gt; epsilon); </span>
+		//at the end of every iteration, checks to see if P(n)-P(n-1) is greater than the error
+		//this is the termination criterion that I chose
+			
+		
+<span class="nc" id="L78">		return p;</span>
+	}
+	public static void benchmark08(double x,double y, double z){
+<span class="nc" id="L81">		System.out.println(Math.cos(3 * x + 2 * y - z) * Math.sin(z + x + y) - Math.cos(z * x * y));</span>
+		    
+		
+<span class="nc" id="L84">	}</span>
+	public static void main (String[] args){
+		
+<span class="nc" id="L87">		double p = .5;</span>
+<span class="nc" id="L88">		double epsilon = .00001; </span>
+		
+<span class="nc" id="L90">		benchmark08(-47.7856419315819,-4.227057612501369,66.99855327173671); </span>
+<span class="nc" id="L91">		benchmark08(36.42428172006077,22.063899267205574,-31.8710281865897); </span>
+<span class="nc" id="L92">		benchmark08(28.820553786199554,-75.65407562877972,-40.85748509809586); </span>
+<span class="nc" id="L93">		System.out.println(&quot;Answer\n&quot;);</span>
+		
+<span class="nc" id="L95">	}</span>
+
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>gen (Jan 7, 2018 7:16:19 AM)</div></body></html>

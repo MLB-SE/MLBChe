@@ -1,0 +1,128 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample63.main()
+
+====================================================== search started: 1/3/18 7:49 PM
+method name benchmark63(DDDDD)V
+method name benchmark63(DDDDD)V
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.5997065200254611
+	UnSolved
+Begin Solving...
+Begin Solving...
+0.6186538426431379
+	UnSolved
+Begin Solving...
+0.6078738644788547
+	UnSolved
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.6150250777106263
+	UnSolved
+Begin Solving...
+0.615837902672542
+	UnSolved
+sucess
+Begin Solving...
+0.6097502733059973
+	UnSolved
+Begin Solving...
+constraint # = 3
+y_7_SYMREAL[0.0] == CONST_0.0 &&
+(x_6_SYMREAL[94.89901487506694] + y_7_SYMREAL[0.0]) > (z_8_SYMREAL[-74.09548945639031] / w_9_SYMREAL[70.26482729069369]) &&
+w_9_SYMREAL[70.26482729069369] != CONST_0.0
+************3##################**********************
+
+====================================================== error 1
+gov.nasa.jpf.vm.NoUncaughtExceptionsProperty
+java.lang.ArithmeticException: div by 0
+	at coral.tests.JPFBenchmark.benchmark63(JPFBenchmark.java:453)
+	at coral.tests.samples.Sample63.main(Sample63.java:9)
+
+
+====================================================== snapshot #1
+thread java.lang.Thread:{id:0,name:main,status:RUNNING,priority:5,isDaemon:false,lockCount:0,suspendCount:0}
+  call stack:
+	at coral.tests.JPFBenchmark.benchmark63(JPFBenchmark.java:453)
+	at coral.tests.samples.Sample63.main(Sample63.java:9)
+
+Begin Solving...
+1.0
+	UnSolved
+
+====================================================== results
+error #1: gov.nasa.jpf.vm.NoUncaughtExceptionsProperty "java.lang.ArithmeticException: div by 0  at coral...."
+
+====================================================== statistics
+elapsed time:       00:00:02
+states:             new=24,visited=0,backtracked=24,end=12
+search:             maxDepth=10,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=9
+heap:               new=574,released=112,maxLive=554,gcCycles=13
+instructions:       10163
+max memory:         166MB
+loaded code:        classes=61,methods=1293
+
+====================================================== search finished: 1/3/18 7:49 PM
+Generating Test Cases...
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark63(0,0,0,57.94691113214142,0); 
+coral.tests.JPFBenchmark.benchmark63(-34.88200192315507,34.39907176951874,69.96386684048429,62.972460498009895,0); 
+coral.tests.JPFBenchmark.benchmark63(67.11307465464806,-55.260997679687506,-93.057463829075,-7.851574371789357,0); 
+coral.tests.JPFBenchmark.benchmark63(-75.43453068279477,95.17722771600913,59.25997698152264,62.35902103379968,0); 
+coral.tests.JPFBenchmark.benchmark63(88.95404568734688,54.5560595793404,-63.04195702132773,56.2948306867425,0); 
+coral.tests.JPFBenchmark.benchmark63(39.52884260648531,-4.8137630326464205,-34.28659240339458,62.37505602358317,0); 
+coral.tests.JPFBenchmark.benchmark63(46.49093222213659,-14.306272844661677,-97.54626178784432,-20.38057889849121,0); 
+coral.tests.JPFBenchmark.benchmark63(95.02965249799357,70.00446025300647,94.90825133387105,-98.41338859803398,0); 
+coral.tests.JPFBenchmark.benchmark63(2.4154783349199107,48.57901656965194,45.124643260172434,19.334117847729487,54.506836747745865); 
+coral.tests.JPFBenchmark.benchmark63(4.890789426301183,24.260008773135244,1.7197104553896236,77.14237441938586,39.788509514848364); 
+coral.tests.JPFBenchmark.benchmark63(50.51409827251271,57.05218635168063,-27.537677700256864,65.3362218962979,28.341764948481995); 
+coral.tests.JPFBenchmark.benchmark63(16.01077048740433,56.638718853523955,-27.514388103601846,33.798420920699385,68.76685991655435); 
+coral.tests.JPFBenchmark.benchmark63(9.15766654107572,1.7552450533967487,-17.430177267331175,7.105427357601002E-15,17.68866415947459); 
+coral.tests.JPFBenchmark.benchmark63(97.38046874861269,2.813537166746478,20.978013917939805,-55.15615515120187,96.8342914775546); 
+coral.tests.JPFBenchmark.benchmark63(86.34745310681498,26.656836178103305,61.382804145842556,51.21151984905532,-12.172041640684242); 
+coral.tests.JPFBenchmark.benchmark63(66.03692465202931,39.86281741123469,68.64815924281575,37.25158282044825,-47.02575461990497); 
+coral.tests.JPFBenchmark.benchmark63(11.283643979176091,65.96264908503795,83.66599776134211,7.971641247278967,-58.9345464840638); 
+coral.tests.JPFBenchmark.benchmark63(33.836949205571614,67.4367084995111,96.62940466753292,90.72171062336065,-34.57183517623237); 
+coral.tests.JPFBenchmark.benchmark63(78.55738757734653,13.788051054514161,90.83382548539905,1.5116131464616558,-0.3530119504767555); 
+coral.tests.JPFBenchmark.benchmark63(1.4817904315421289,270.03722551535753,284.3734757136581,-1.3877787807814457E-17,85.7443818863587); 
+coral.tests.JPFBenchmark.benchmark63(56.2622621641126,4.493088965012788,33.0680802836234,45.5958486561633,-0.995730290076196); 
+coral.tests.JPFBenchmark.benchmark63(0.20418581376220257,42.50054514477233,42.70526541293501,-5.34454400474345E-4,-36.127762450046376); 
+coral.tests.JPFBenchmark.benchmark63(0.5727942705751952,64.23171120517016,64.80451113573055,-6.938893903907228E-18,-28.022812267968504); 
+coral.tests.JPFBenchmark.benchmark63(52.39893779759467,33.43692468495411,96.75146935289098,-9.01604178402981,20.506282022833403); 
+coral.tests.JPFBenchmark.benchmark63(33.16368043869649,6.72980134543935,35.33195807586223,4.727593919537664,100.0); 
+coral.tests.JPFBenchmark.benchmark63(43.31151625376932,7.467354418969888,49.666104108434496,1.1149878757728602,269.367217961992); 
+coral.tests.JPFBenchmark.benchmark63(27.81501111527878,6.227821487657366,32.79639845077388,1.2484595975408275,138.3251591000535); 
+coral.tests.JPFBenchmark.benchmark63(15.031222218309566,2.4678262571122405,-5.237791212450337,42.33197437579688,-32.68435920348596); 
+coral.tests.JPFBenchmark.benchmark63(94.89901487506694,0.0,-74.09548945639031,70.26482729069369,0); 
+coral.tests.JPFBenchmark.benchmark63(0,0,0,-14.268565945223344,0); 
+

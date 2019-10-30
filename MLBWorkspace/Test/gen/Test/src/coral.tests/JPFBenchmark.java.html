@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>JPFBenchmark.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">gen (Jan 7, 2018 7:16:19 AM)</a> &gt; <a href="../../index.html" class="el_group">Test</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">coral.tests</a> &gt; <span class="el_source">JPFBenchmark.java</span></div><h1>JPFBenchmark.java</h1><pre class="source lang-java linenums">package coral.tests;
+
+import org.apache.commons.math3.util.FastMath;
+
+<span class="nc" id="L5">public class JPFBenchmark {</span>
+
+<span class="fc" id="L7">  public static String sucess = &quot;sucess&quot;;</span>
+
+  // sin(x) + cos(y) &gt; 1.0
+  public static void benchmark01(double x, double y) {
+<span class="fc bfc" id="L11" title="All 2 branches covered.">    if (Math.sin(x) + Math.cos(y) &gt; 1) {</span>
+<span class="fc" id="L12">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L14">  }</span>
+
+  // sin(x) - cos(y) &lt; 0.0000000001
+  public static void benchmark02(double x, double y) {
+<span class="fc bfc" id="L18" title="All 2 branches covered.">    if (Math.sin(x) - Math.cos(y) &lt; 0.0000000001) {</span>
+<span class="fc" id="L19">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L21">  }</span>
+
+  // sin(x) - cos(y) == 0.0
+  public static void benchmark03(double x, double y) {
+<span class="fc bfc" id="L25" title="All 2 branches covered.">    if (Math.sin(x) - Math.cos(y) == 0) {</span>
+<span class="fc" id="L26">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L28">  }</span>
+
+  // exp(x) &gt; 0.0
+  public static void benchmark04(double x) {
+<span class="pc bpc" id="L32" title="1 of 2 branches missed.">    if (Math.exp(x) &gt; 0) {</span>
+<span class="fc" id="L33">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L35">  }</span>
+
+  // sin A + sin B + sin C = 4 * cos A * cos B * cos C
+  public static void benchmark05(double x, double y, double z) {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">    if (Math.sin(x) + Math.sin(y) + Math.sin(z) == 4 * Math.cos(x)</span>
+<span class="fc" id="L40">        * Math.cos(y) * Math.cos(z)) {</span>
+<span class="fc" id="L41">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L43">  }</span>
+
+  // cos A + cos B + cos C &gt; 4 sin A/2 sin B/2 sin C/2
+  public static void benchmark06(double x, double y, double z) {
+<span class="fc" id="L47">    if (Math.cos(x) + Math.cos(y) + Math.cos(z) &gt; 4 * Math.sin(x / 2)</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        * Math.sin(y / 2) * Math.sin(z / 2)) {</span>
+<span class="fc" id="L49">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L51">  }</span>
+
+  // (sin(2x - y)/(cos(2y + y) + 1) = cos(2z + x)/(sin(2w + y) - 1)
+  public static void benchmark07(double x, double y, double z, double w) {
+<span class="fc bfc" id="L55" title="All 2 branches covered.">    if (Math.sin(2 * x - y) / (Math.cos(2 * y + y) + 1) == Math.cos(2 * z + x)</span>
+<span class="fc" id="L56">        / (Math.sin(2 * w + y) - 1)) {</span>
+<span class="fc" id="L57">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L59">  }</span>
+
+  // cos(3x+2y-z) * sin(z+x+y) == cos(z*x*y)
+  public static void benchmark08(double x, double y, double z) {
+<span class="fc bfc" id="L63" title="All 2 branches covered.">    if (Math.cos(3 * x + 2 * y - z) * Math.sin(z + x + y) == Math</span>
+<span class="fc" id="L64">        .cos(z * x * y)) {</span>
+<span class="fc" id="L65">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L67">  }</span>
+
+  // Math.sin(Math.cos(x*y)) &lt; Math.cos(Math.sin(x*y))
+  public static void benchmark09(double x, double y) {
+<span class="pc bpc" id="L71" title="1 of 2 branches missed.">    if (Math.sin(Math.cos(x * y)) &lt; Math.cos(Math.sin(x * y))) {</span>
+<span class="fc" id="L72">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L74">  }</span>
+
+  // Math.sin(x*Math.cos(y*Math.sin(z))) &gt; Math.cos(x*Math.sin(y*Math.cos(z)))
+  public static void benchmark10(double x, double y, double z) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">    if (Math.sin(x * Math.cos(y * Math.sin(z))) &gt; Math.cos(x</span>
+<span class="fc" id="L79">        * Math.sin(y * Math.cos(z)))) {</span>
+<span class="fc" id="L80">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L82">  }</span>
+
+
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>gen (Jan 7, 2018 7:16:19 AM)</div></body></html>

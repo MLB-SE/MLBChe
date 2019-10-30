@@ -1,0 +1,15 @@
+target = program
+target.args = 1,2
+classpath = /home/mlb/MLBWorkspace/Test/bin
+native_classpath = /home/mlb/MLBWorkspace/Test/bin
+
+symbolic.method = program.example(sym#sym)
+symbolic.dp = CSP
+symbolic.mlpm = 3000
+#symbolic.strategy = ECS-Guided
+
+@using = jpf-nhandler
+nhandler.delegateUnhandledNative = true
+nhandler.spec.skip = program.newsqrt;\
+						org.apache.commons.math3.util.FastMath.asin;\
+						org.apache.commons.math3.util.FastMath.acos;

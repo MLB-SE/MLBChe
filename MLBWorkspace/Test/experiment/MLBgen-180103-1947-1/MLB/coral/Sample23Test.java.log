@@ -1,0 +1,70 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample23.main()
+
+====================================================== search started: 1/3/18 7:48 PM
+method name benchmark23(DDDD)V
+method name benchmark23(DDDD)V
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.6614707067434814
+	UnSolved
+Begin Solving...
+Begin Solving...
+constraint # = 2
+( sin (((w_8_SYMREAL[33.50093968365003] * CONST_2.0) + y_6_SYMREAL[-90.56382426424827])) - CONST_1.0) == CONST_0.0 &&
+( cos (((y_6_SYMREAL[-90.56382426424827] * CONST_2.0) + x_5_SYMREAL[-100.0])) + CONST_1.0) != CONST_0.0
+************3##################**********************
+
+====================================================== error 1
+gov.nasa.jpf.vm.NoUncaughtExceptionsProperty
+java.lang.ArithmeticException: div by 0
+	at coral.tests.JPFBenchmark.benchmark23(JPFBenchmark.java:173)
+	at coral.tests.samples.Sample23.main(Sample23.java:9)
+
+
+====================================================== snapshot #1
+thread java.lang.Thread:{id:0,name:main,status:RUNNING,priority:5,isDaemon:false,lockCount:0,suspendCount:0}
+  call stack:
+	at coral.tests.JPFBenchmark.benchmark23(JPFBenchmark.java:173)
+	at coral.tests.samples.Sample23.main(Sample23.java:9)
+
+Begin Solving...
+0.9813667751670833
+	UnSolved
+
+====================================================== results
+error #1: gov.nasa.jpf.vm.NoUncaughtExceptionsProperty "java.lang.ArithmeticException: div by 0  at coral...."
+
+====================================================== statistics
+elapsed time:       00:00:01
+states:             new=7,visited=0,backtracked=7,end=2
+search:             maxDepth=4,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=3
+heap:               new=574,released=22,maxLive=554,gcCycles=3
+instructions:       10051
+max memory:         72MB
+loaded code:        classes=61,methods=1293
+
+====================================================== search finished: 1/3/18 7:48 PM
+Generating Test Cases...
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark23(55.670902569427426,-97.96989839264832,0,0); 
+coral.tests.JPFBenchmark.benchmark23(-3.306604705718968,48.172635694004896,0,-61.773453595692885); 
+coral.tests.JPFBenchmark.benchmark23(-32.09513591666506,-64.52675111386519,55.52910760410225,-58.056297106456434); 
+coral.tests.JPFBenchmark.benchmark23(10.648039641262804,94.85256734552662,43.15419703833898,29.901368165692276); 
+coral.tests.JPFBenchmark.benchmark23(21.26433501528753,-58.85175332231529,63.32165486118819,66.41726287677966); 
+coral.tests.JPFBenchmark.benchmark23(-100.0,-90.56382426424827,0,33.50093968365003); 
+coral.tests.JPFBenchmark.benchmark23(-99.90465438501643,92.36382802415625,0,0); 
+

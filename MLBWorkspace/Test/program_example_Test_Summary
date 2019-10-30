@@ -1,0 +1,9 @@
+		== Summary ==		
+
+		ECS = 0.16110894957658528
+		Total Test Cases = 159
+		elapsed time = 00:00:31
+		states:             new=55,visited=0,backtracked=55,end=20
+		choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=19
+		heap:               new=1412,released=284,maxLive=590,gcCycles=34
+		loaded code:        classes=58,methods=1341

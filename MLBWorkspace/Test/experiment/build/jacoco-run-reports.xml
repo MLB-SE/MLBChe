@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project default="report" xmlns:jacoco="antlib:org.jacoco.ant" >
+    <!--
+       Path to the JaCoCo JARs; should be set by calling Ant.
+
+       Note: The caller can set the reference only if it is defined here.
+    -->
+    <path id="classpath.jacoco" />
+    <taskdef uri="antlib:org.jacoco.ant"
+             resource="org/jacoco/ant/antlib.xml"
+             classpathref="classpath.jacoco" />
+
+    <target name="report" depends="report-MLB" />
+    <target name="report-MLB">
+      <jacoco:report>
+        <executiondata>
+          <fileset dir="${build.tests.dir}/MLB"
+                   includes="**/*.exec" />
+        </executiondata>
+
+        <structure name="MLB Coverage Evaluation">
+          <group name="coral">
+            <classfiles>
+              <fileset dir="${build.programs.dir}/coral" />
+            </classfiles>
+            <sourcefiles encoding="UTF-8">
+              <fileset dir="${src.programs.dir}/coral" />
+            </sourcefiles>
+          </group>
+        </structure>
+
+        <html destdir="${report.dir}/MLB" />
+        <csv destfile="${report.dir}/report-MLB.csv" />
+        <xml destfile="${report.dir}/report-MLB.xml" />
+      </jacoco:report>
+      <jacoco:merge destfile="${report.dir}/merged-MLB.exec">
+        <fileset dir="${build.tests.dir}/MLB"
+                 includes="**/jacoco.exec" />
+      </jacoco:merge>
+    </target>
+</project>

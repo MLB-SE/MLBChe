@@ -1,0 +1,42 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample47.main()
+
+====================================================== search started: 1/3/18 7:49 PM
+method name benchmark47(DDD)V
+method name benchmark47(DDD)V
+Begin Solving...
+Begin Solving...
+0.6987590111873063
+	UnSolved
+Begin Solving...
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+elapsed time:       00:00:00
+states:             new=3,visited=0,backtracked=3,end=2
+search:             maxDepth=2,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=1
+heap:               new=558,released=22,maxLive=554,gcCycles=3
+instructions:       10019
+max memory:         72MB
+loaded code:        classes=57,methods=1263
+
+====================================================== search finished: 1/3/18 7:49 PM
+Generating Test Cases...
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark47(-78.16225353205766,-10.714592194674609,11.534179689259275); 
+coral.tests.JPFBenchmark.benchmark47(-433.3877103159653,-147.01929839751043,-576.3528529934496); 
+coral.tests.JPFBenchmark.benchmark47(94.66423732087824,-91.19681682058267,-1.9115461153660789); 
+

@@ -1,0 +1,47 @@
+import org.apache.commons.math3.util.FastMath;
+
+public class program {
+	public  double newsqrt(double c){
+		if(c<0) return Double.NaN;
+		if(c==0) return 0;
+		double err = 1e-14;
+		double x = c;
+		while(Math.abs(x-c/x)>err){
+			x = (x+c/x)/2.0;
+		}
+		return x;
+	}
+
+	public boolean problem04(double x, double y){
+		if(x + y < 50 && x < Math.log10(y))
+			return true;
+	    else return false;
+	}
+	public static void example(double x, double y){
+		 double a = Math.pow(x,y) - Math.pow(y,x);
+		 double b = Math.exp(y) - Math.exp(x);
+		 double c = Math.pow(x, 2);
+		 if( b>0 && a>b) {
+			 if(y<c)
+				 System.out.println("Solved ProblemSmaller");
+			 else if(y>c)
+				 System.out.println("Solved ProblemLarger");
+			 else 
+				 System.out.println("Solved ProblemEqual");
+	     }
+		 
+		 program test = new program();
+		//x^2 + 3*Math.sqrt(y) < x*y && x < y ^ 2 && x + y < 50 && x = -13 + y && x < log10(y) 
+		 if(x*x + 3*test.newsqrt(y) < x*y && x < Math.pow(y,2))
+			 if(test.problem04(x,y) && x == -13+y ){
+				 System.out.println("Solved Problem withFunctionCall");
+			 }
+		 
+		 if(Math.asin(x) * FastMath.acos(x) < FastMath.atan(x)) {
+		     System.out.println("Solved Problem withThirdPartyFunctionCall");
+		 }
+	}
+	public static void main(String[] args){
+		example(1,0);
+	}
+}

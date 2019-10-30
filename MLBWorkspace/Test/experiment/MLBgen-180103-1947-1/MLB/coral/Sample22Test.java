@@ -1,0 +1,54 @@
+import org.junit.Test;
+
+public class Sample22Test {
+
+  @Test
+  public void test0() {
+    coral.tests.JPFBenchmark.benchmark22(100.0,31.129928345474212,-100.0,0,0,46.92189749651386,47.52787441784008); ;
+  }
+
+  @Test
+  public void test1() {
+    coral.tests.JPFBenchmark.benchmark22(-100.0,-51.133913450991294,-100.0,90.5862608853092,100.0,100.0,-100.0); ;
+  }
+
+  @Test
+  public void test2() {
+    coral.tests.JPFBenchmark.benchmark22(12.072741689689636,-88.78011159401255,-23.360278490160454,0,0,0,0); ;
+  }
+
+  @Test
+  public void test3() {
+    coral.tests.JPFBenchmark.benchmark22(-35.275268072267,81.73582643117186,6.4838053808356335,0,0,0,0); ;
+  }
+
+  @Test
+  public void test4() {
+    coral.tests.JPFBenchmark.benchmark22(-4.030184987746736,-80.83105696773953,-1.6956040788447524,-25.721110552744264,-72.27366364354583,71.45064020530987,-34.57123503180273); ;
+  }
+
+  @Test
+  public void test5() {
+    coral.tests.JPFBenchmark.benchmark22(-49.62757191516507,-49.47157223653467,27.79033358444873,-10.295577826931535,33.64737207559364,-7.1845525187437715,-72.58995945450621); ;
+  }
+
+  @Test
+  public void test6() {
+    coral.tests.JPFBenchmark.benchmark22(76.36534819807409,-10.92300059261153,85.47637365924587,32.56055859799312,-66.9154734138,49.25299411667828,63.578933841448645); ;
+  }
+
+  @Test
+  public void test7() {
+    coral.tests.JPFBenchmark.benchmark22(-79.30869801619566,-9.332993447779339,-85.37591697553383,33.34400515117097,18.263535589189075,-52.730796041963984,-8.43216080108917); ;
+  }
+
+  @Test
+  public void test8() {
+    coral.tests.JPFBenchmark.benchmark22(8.339637368935016,-71.54181919343796,-71.85443857516296,0,0,0,0); ;
+  }
+
+  @Test
+  public void test9() {
+    coral.tests.JPFBenchmark.benchmark22(90.65386854319186,-34.373446128961476,-72.12950777071406,0,0,-80.84384662837638,55.618236824517055); ;
+  }
+}

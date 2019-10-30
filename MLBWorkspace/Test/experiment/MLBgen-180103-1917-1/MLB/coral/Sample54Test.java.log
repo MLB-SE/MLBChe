@@ -1,0 +1,68 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample54.main()
+
+====================================================== search started: 1/3/18 7:19 PM
+method name benchmark54(DDD)V
+method name benchmark54(DDD)V
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.7856000544574983
+	UnSolved
+Begin Solving...
+Begin Solving...
+0.713523351863319
+	UnSolved
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.68206018848372
+	UnSolved
+Begin Solving...
+***********Warning: everything false
+0.6907698610271741
+	UnSolved
+Begin Solving...
+0.7100885097426102
+	UnSolved
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+elapsed time:       00:00:01
+states:             new=8,visited=0,backtracked=8,end=4
+search:             maxDepth=4,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=3
+heap:               new=558,released=40,maxLive=554,gcCycles=5
+instructions:       10086
+max memory:         106MB
+loaded code:        classes=57,methods=1263
+
+====================================================== search finished: 1/3/18 7:19 PM
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark54(21.893765613236667,15.698180081915524,-81.45771238201186); 
+coral.tests.JPFBenchmark.benchmark54(55.105247229280366,15.818082261046134,-87.48710002168292); 
+coral.tests.JPFBenchmark.benchmark54(45.5371456565222,-34.681904755065744,-50.82261339983394); 
+coral.tests.JPFBenchmark.benchmark54(6.893477870024739,14.750720986401461,-91.40410400209147); 
+coral.tests.JPFBenchmark.benchmark54(94.19513648746701,64.81801989318598,95.95111179230659); 
+coral.tests.JPFBenchmark.benchmark54(95.47533135209622,-19.67097031180387,98.77225733939946); 
+coral.tests.JPFBenchmark.benchmark54(15.103059158957691,97.30775362522493,86.83901023895018); 
+coral.tests.JPFBenchmark.benchmark54(0.31942852309873254,1.174774862641956,-0.17357567328767232); 
+coral.tests.JPFBenchmark.benchmark54(72.83459674437904,-13.0291229784211,93.90277939314103); 
+coral.tests.JPFBenchmark.benchmark54(4.7187904541620185,-1.0839440027484102,90.1106287589831); 
+coral.tests.JPFBenchmark.benchmark54(16.355491007098607,-98.35318253023021,19.5156012963637); 
+coral.tests.JPFBenchmark.benchmark54(28.716131004349336,-90.27880808815985,29.62298315722353); 
+

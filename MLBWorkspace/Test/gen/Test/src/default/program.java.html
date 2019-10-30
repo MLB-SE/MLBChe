@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../jacoco-resources/report.gif" type="image/gif"/><title>program.java</title><link rel="stylesheet" href="../../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">gen (Jan 7, 2018 7:16:19 AM)</a> &gt; <a href="../../index.html" class="el_group">Test</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.source.html" class="el_package">default</a> &gt; <span class="el_source">program.java</span></div><h1>program.java</h1><pre class="source lang-java linenums">import org.apache.commons.math3.util.FastMath;
+
+<span class="fc" id="L3">public class program {</span>
+	public  double newsqrt(double c){
+<span class="fc bfc" id="L5" title="All 2 branches covered.">		if(c&lt;0) return Double.NaN;</span>
+<span class="pc bpc" id="L6" title="1 of 2 branches missed.">		if(c==0) return 0;</span>
+<span class="fc" id="L7">		double err = 1e-14;</span>
+<span class="fc" id="L8">		double x = c;</span>
+<span class="fc bfc" id="L9" title="All 2 branches covered.">		while(Math.abs(x-c/x)&gt;err){</span>
+<span class="fc" id="L10">			x = (x+c/x)/2.0;</span>
+		}
+<span class="fc" id="L12">		return x;</span>
+	}
+	public boolean problem04(double x, double y){
+<span class="fc bfc" id="L15" title="All 4 branches covered.">		if(x + y &lt; 50 &amp;&amp; x &lt; Math.log10(y))</span>
+<span class="fc" id="L16">			return true;</span>
+<span class="fc" id="L17">	    else return false;</span>
+	}
+	public static void example(double x, double y){
+<span class="fc" id="L20">		 double a = Math.pow(x,y) - Math.pow(y,x);</span>
+<span class="fc" id="L21">		 double b = Math.exp(y) - Math.exp(x);</span>
+<span class="fc" id="L22">		 double c = Math.pow(x, 2);</span>
+<span class="fc bfc" id="L23" title="All 4 branches covered.">		 if( b&gt;0 &amp;&amp; a&gt;b) {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">			 if(y&lt;c)</span>
+<span class="fc" id="L25">				 System.out.println(&quot;Solved ProblemSmaller&quot;);</span>
+<span class="fc bfc" id="L26" title="All 2 branches covered.">			 else if(y == c+1)</span>
+<span class="fc" id="L27">				 System.out.println(&quot;Solved ProblemEqual&quot;);</span>
+	     }
+		 
+<span class="fc" id="L30">		 program test = new program();</span>
+		//x^2 + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; y ^ 2 &amp;&amp; x + y &lt; 50 &amp;&amp; x = -13 + y &amp;&amp; x &lt; log10(y) 
+<span class="pc bpc" id="L32" title="1 of 4 branches missed.">		 if(x*x + 3*test.newsqrt(y) &lt; x*y &amp;&amp; x &lt; Math.pow(y,2))</span>
+<span class="fc bfc" id="L33" title="All 4 branches covered.">			 if(test.problem04(x,y) &amp;&amp; x == -13+y ){</span>
+<span class="fc" id="L34">				 System.out.println(&quot;Solved Problem withFunctionCall&quot;);</span>
+			 }
+		 
+<span class="fc bfc" id="L37" title="All 2 branches covered.">		 if(Math.asin(x) * FastMath.acos(x) &lt; FastMath.atan(x)) {</span>
+<span class="fc" id="L38">		     System.out.println(&quot;Solved Problem withThirdPartyFunctionCall&quot;);</span>
+		 }
+<span class="fc" id="L40">	}</span>
+	public static void main(String[] args){
+<span class="nc" id="L42">		example(0,0);</span>
+<span class="nc" id="L43">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span>gen (Jan 7, 2018 7:16:19 AM)</div></body></html>

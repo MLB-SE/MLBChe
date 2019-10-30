@@ -1,0 +1,758 @@
+/*
+ * Copyright (C) 2014, United States Government, as represented by the
+ * Administrator of the National Aeronautics and Space Administration.
+ * All rights reserved.
+ *
+ * Symbolic Pathfinder (jpf-symbc) is licensed under the Apache License, 
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License. You may obtain a copy of the License at
+ * 
+ *        http://www.apache.org/licenses/LICENSE-2.0. 
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and 
+ * limitations under the License.
+ */
+
+//
+//Copyright (C) 2006 United States Government as represented by the
+//Administrator of the National Aeronautics and Space Administration
+//(NASA).  All Rights Reserved.
+//
+//This software is distributed under the NASA Open Source Agreement
+//(NOSA), version 1.3.  The NOSA has been approved by the Open Source
+//Initiative.  See the file NOSA-1.3-JPF at the top of the distribution
+//directory tree for the complete NOSA document.
+//
+//THE SUBJECT SOFTWARE IS PROVIDED "AS IS" WITHOUT ANY WARRANTY OF ANY
+//KIND, EITHER EXPRESSED, IMPLIED, OR STATUTORY, INCLUDING, BUT NOT
+//LIMITED TO, ANY WARRANTY THAT THE SUBJECT SOFTWARE WILL CONFORM TO
+//SPECIFICATIONS, ANY IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR
+//A PARTICULAR PURPOSE, OR FREEDOM FROM INFRINGEMENT, ANY WARRANTY THAT
+//THE SUBJECT SOFTWARE WILL BE ERROR FREE, OR ANY WARRANTY THAT
+//DOCUMENTATION, IF PROVIDED, WILL CONFORM TO THE SUBJECT SOFTWARE.
+//
+
+package gov.nasa.jpf.symbc.numeric.solvers;
+
+import gov.nasa.jpf.jvm.bytecode.InstructionFactory;
+import gov.nasa.jpf.symbc.SymbolicInstructionFactory;
+import gov.nasa.jpf.symbc.numeric.BinaryLinearIntegerExpression;
+import gov.nasa.jpf.symbc.numeric.BinaryNonLinearIntegerExpression;
+import gov.nasa.jpf.symbc.numeric.BinaryRealExpression;
+import gov.nasa.jpf.symbc.numeric.Comparator;
+import gov.nasa.jpf.symbc.numeric.Constraint;
+import gov.nasa.jpf.symbc.numeric.Expression;
+import gov.nasa.jpf.symbc.numeric.FuncIntegerExpression;
+import gov.nasa.jpf.symbc.numeric.FuncRealExpression;
+import gov.nasa.jpf.symbc.numeric.IntegerConstant;
+import gov.nasa.jpf.symbc.numeric.IntegerExpression;
+import gov.nasa.jpf.symbc.numeric.LinearIntegerConstraint;
+import gov.nasa.jpf.symbc.numeric.MathRealExpression;
+import gov.nasa.jpf.symbc.numeric.NonLinearIntegerConstraint;
+import gov.nasa.jpf.symbc.numeric.PathCondition;
+import gov.nasa.jpf.symbc.numeric.RealConstant;
+import gov.nasa.jpf.symbc.numeric.RealConstraint;
+import gov.nasa.jpf.symbc.numeric.RealExpression;
+//import choco.Problem;
+import gov.nasa.jpf.symbc.numeric.RealProblem;
+import gov.nasa.jpf.symbc.numeric.SymbolicInteger;
+import gov.nasa.jpf.symbc.numeric.SymbolicReal;
+import gov.nasa.jpf.symbc.numeric.SymbolicVariable;
+import slf.DataStructure.Dimension;
+import slf.Learning.DynamicBoundary;
+import slf.Learning.Mix;
+import slf.Learning.RealAndInteger;
+import slf.ValueFunction.Port;
+
+import static gov.nasa.jpf.symbc.concolic.walk.Util.variablesIn;
+
+import java.util.ArrayList;
+import java.util.Set;
+
+import CSP_R.CSP_Random_Port;
+import choco.integer.*;
+import choco.integer.var.IntTerm;
+import choco.integer.var.IntTerm.*;
+import choco.real.*;
+import choco.real.constraint.MixedEqXY;
+
+public class ProblemCSP extends ProblemGeneral {
+
+	int type ;//= SymbolicInstructionFactory.mltype_int;
+	RealProblem pb;
+	public static int timeBound;// = 30000;
+	public ProblemCSP() {
+		pb = new RealProblem(); 
+		type = SymbolicInstructionFactory.mltype_int;
+		//pb.setPrecision(1e-8);// need to check thissolve
+	}
+ 
+	public IntDomainVar makeIntVar(String name, int min, int max) {
+		return pb.makeBoundIntVar(name,min,max);
+	}
+
+	public RealVar makeRealVar(String name, double min, double max) {
+		return pb.makeRealVar(name,min,max);
+	}
+	public Object eq(int value, Object exp){return pb.eq(value, (IntExp)exp);}
+	public Object eq(Object exp, int value){return pb.eq((IntExp) exp, value);}
+	public Object eq(Object exp1, Object exp2){
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.eq((IntExp) exp1,(IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.eq((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object eq(double value, Object exp){return pb.eq(value, (RealExp) exp);}
+	public Object eq(Object exp, double value){return pb.eq(value, (RealExp) exp);}
+	public Object neq(int value, Object exp){return pb.neq(value, (IntExp) exp);}
+	public Object neq(Object exp, int value){return pb.neq(value, (IntExp) exp);}
+	public Object neq(Object exp1, Object exp2){
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.neq((IntExp) exp1,(IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.neq((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object neq(double value, Object exp){return pb.neq(value, (RealExp) exp);}
+	public Object neq(Object exp, double value){return pb.neq(value, (RealExp) exp);}
+	public Object leq(int value, Object exp){return pb.leq(value,(IntExp)exp);}
+	public Object leq(Object exp, int value){return pb.leq((IntExp)exp,value);}
+	public Object leq(Object exp1, Object exp2){
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.leq((IntExp) exp1,(IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.leq((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object leq(double value, Object exp){return pb.leq(value,(RealExp)exp);}
+	public Object leq(Object exp, double value){return pb.leq((RealExp)exp, value);}
+	public Object geq(int value, Object exp){return pb.geq(value, (IntExp)exp);}
+	public Object geq(Object exp, int value){return pb.geq((IntExp)exp,value);}
+	public Object geq(Object exp1, Object exp2){
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.geq((IntExp) exp1,(IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.geq((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object geq(double value, Object exp){
+		return pb.geq(value, (RealExp) exp);
+	}
+	public Object geq(Object exp, double value){
+		return pb.geq((RealExp) exp, value);
+	}
+	public Object lt(int value, Object exp){
+		return pb.lt(value, (IntExp) exp);
+	}
+	public Object lt(Object exp, int value){
+		return pb.lt((IntExp) exp,value);
+	}
+	public Object lt(Object exp1, Object exp2){
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.lt((IntExp) exp1, (IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.lt((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object lt(double value, Object exp){
+		return pb.lt(value,(RealExp) exp);
+	}
+	public Object lt(Object exp, double value){
+		return pb.lt((RealExp) exp,value);
+	}
+	public Object gt(int value, Object exp){
+		return pb.gt(value,(IntExp) exp);
+	}
+	public Object gt(Object exp, int value){
+		return pb.gt((IntExp) exp,value);
+	}
+	public Object gt(Object exp1, Object exp2){
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.gt((IntExp) exp1, (IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.gt((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object gt(double value, Object exp){
+		return pb.gt(value,(RealExp) exp);
+	}
+	public Object gt(Object exp, double value){
+		return pb.gt((RealExp) exp, value);
+	}
+
+	public Object plus(int value, Object exp) {
+		return pb.plus(value,(IntExp) exp);
+	}
+	public Object plus(Object exp, int value) {
+		return pb.plus((IntExp) exp, value);
+	}
+	public Object plus(Object exp1, Object exp2) {
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.plus((IntExp) exp1, (IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.plus((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object plus(double value, Object exp) {
+		return pb.plus(pb.cst(value),(RealExp) exp);
+	}
+	public Object plus(Object exp, double value) {
+		return pb.plus((RealExp) exp, pb.cst(value));
+	}
+
+	public Object minus(int value, Object exp) {
+		return pb.minus(value, (IntExp) exp);
+	}
+	public Object minus(Object exp, int value) {
+		return pb.minus((IntExp) exp, value);
+	}
+	public Object minus(Object exp1, Object exp2) {
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			return pb.minus((IntExp) exp1, (IntExp) exp2);
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.minus((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object minus(double value, Object exp) {
+		return pb.minus(pb.cst(value), (RealExp) exp);
+	}
+	public Object minus(Object exp, double value) {
+		return pb.minus((RealExp) exp, pb.cst(value));
+	}
+	public Object mult(int value, Object exp) {
+		if (exp instanceof IntVar)
+			return pb.mult(value, (IntExp) exp);
+		else if (exp instanceof IntTerm) {
+			// distribute value over exp
+			//return pb.mult(value, (IntExp) exp);
+			IntTerm it= (IntTerm) exp;
+        	IntTerm constant= new IntTerm(0);
+        	constant.setConstant(value * it.getConstant());
+        	IntExp sum = constant;
+        	for (int i = 0; i < it.getSize(); i++) {
+        		IntTerm newterm= new IntTerm(1);
+        		newterm.setCoefficient(i, it.getCoefficient(i)*value);
+        		newterm.setVariable(i, it.getVariable(i));
+        		sum= (IntExp) pb.plus(sum, newterm);
+        	}
+        	return sum;
+		}
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object mult(Object exp, int value) {
+		if (exp instanceof IntVar)
+			return pb.mult(value, (IntExp) exp);
+
+		else if (exp instanceof IntTerm) {
+			// distribute value over exp
+			//return pb.mult(value, (IntExp) exp);
+			IntTerm it= (IntTerm) exp;
+    		IntTerm constant= new IntTerm(0);
+    		constant.setConstant(value * it.getConstant());
+    		IntExp sum = constant;
+    		for (int i = 0; i < it.getSize(); i++) {
+    			IntTerm newterm= new IntTerm(1);
+    			newterm.setCoefficient(i, it.getCoefficient(i)*value);
+    			newterm.setVariable(i, it.getVariable(i));
+    			sum= (IntExp) pb.plus(sum, newterm);
+    		}
+    		return sum;
+		}
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object mult(Object exp1, Object exp2) {
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			throw new RuntimeException("## Error Choco: non-lin int constraint");
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.mult((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object mult(double value, Object exp) {
+		return pb.mult(pb.cst(value), (RealExp) exp);
+	}
+	public Object mult(Object exp, double value) {
+		return pb.mult((RealExp) exp, pb.cst(value));
+	}
+	public Object div(int value, Object exp) {
+		throw new RuntimeException("## Error Choco: non-lin int constraint");
+	}
+	public Object div(Object exp, int value) {
+		throw new RuntimeException("## Error Choco: non-lin int constraint");
+	}
+	public Object div(Object exp1, Object exp2) {
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			throw new RuntimeException("## Error Choco: non-lin int constraint");
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.div((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object div(double value, Object exp) {
+		return pb.div(pb.cst(value), (RealExp) exp);
+	}
+	public Object div(Object exp, double value) {
+		return pb.div((RealExp) exp,value);
+	}
+	
+	public Object rem(int value, Object exp) {
+		throw new RuntimeException("## Error Choco: non-lin int constraint");
+	}
+	public Object rem(Object exp, int value) {
+		throw new RuntimeException("## Error Choco: non-lin int constraint");
+	}
+	public Object rem(Object exp1, Object exp2) {
+		if (exp1 instanceof IntExp && exp2 instanceof IntExp )
+			throw new RuntimeException("## Error Choco: non-lin int constraint");
+		else if (exp1 instanceof RealExp && exp2 instanceof RealExp)
+			return pb.div((RealExp) exp1,(RealExp) exp2);
+		else
+			throw new RuntimeException("## Error Choco");
+	}
+	public Object rem(double value, Object exp) {
+		return pb.div(pb.cst(value), (RealExp) exp);
+	}
+	public Object rem(Object exp, double value) {
+		return pb.div((RealExp) exp,value);
+	}
+	
+	
+	
+	
+	public Object sin(Object exp) {
+		return pb.sin((RealExp) exp);
+	}
+	public Object cos(Object exp) {
+		return pb.cos((RealExp) exp);
+	}
+
+	public Object power(Object exp, double value) {
+		return pb.power((RealExp) exp, (int)value);
+	}
+	public Object mixed(Object exp1, Object exp2) { // TODO:check !!!
+
+		if (exp1 instanceof RealVar && exp2 instanceof IntVar)
+			return new MixedEqXY((RealVar)exp1,(IntDomainVar)exp2);
+		else
+			throw new RuntimeException("## Error Choco: mixed");
+	}
+
+	public double getRealValueInf(Object dpVar) {
+		return ((RealVar) dpVar).getValue().getInf();
+	}
+	public double getRealValueSup(Object dpVar) {
+		return ((RealVar) dpVar).getValue().getSup();
+	}
+	public double getRealValue(Object dpVar) {
+		throw new RuntimeException("# Error: Choco can not compute real solution!");
+	}
+	public int getIntValue(Object dpVar) {
+		return ((IntDomainVar) dpVar).getVal();
+	}
+
+	public Object constant(double d) {
+		return pb.cst(d);
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	//Licious
+  	
+	  public ArrayList<Constraint> getDomainCon(Constraint c){
+		  Constraint cur = c;
+		  ArrayList<Constraint> result = new ArrayList<Constraint>();
+		  while(cur != null){
+			  Constraint c1 = getConFromExpression(cur.getLeft());
+			  Constraint c2 = getConFromExpression(cur.getRight());
+			  if(c1 != null)
+				  result.add(c1);
+			  if(c2 != null)
+				  result.add(c2);
+			  cur = cur.getTail();
+		  }
+		  return result;
+	  }
+	  public Constraint linkCon(Constraint c1, Constraint c2){
+		  Constraint result = null;
+		  if(c1 != null){
+			  result = c1;
+			  while(c1.and != null)
+				  c1 = c1.getTail();
+			  c1.and = c2;
+		  }else{
+			  result = c2;
+		  }
+		  return result;
+	  }
+	 public Constraint getConFromExpression(Expression e){
+		  Constraint result = null;
+		  if (e instanceof IntegerExpression){
+				if(e instanceof BinaryLinearIntegerExpression){
+					Constraint l = getConFromExpression(((BinaryLinearIntegerExpression)e).getLeft());
+					Constraint r = getConFromExpression(((BinaryLinearIntegerExpression)e).getRight());
+					switch(((BinaryLinearIntegerExpression) e).getOp()){
+						case DIV: case REM:
+							IntegerExpression el = ((BinaryLinearIntegerExpression) e).getRight();
+							Comparator c = Comparator.NE;
+							IntegerExpression er = new IntegerConstant(0);
+							LinearIntegerConstraint n = new LinearIntegerConstraint(el, c, er);
+							result = linkCon(l,r);
+							result = linkCon(result, n);
+							break;
+						case PLUS: case MINUS: case MUL: case AND: case OR: case XOR: case SHIFTL: case SHIFTR: case SHIFTUR:
+							result = linkCon(l,r);
+							break;
+						  default: throw new RuntimeException("## Error: BinaryLinearSolution solution: l " + l + " op " + ((BinaryLinearIntegerExpression) e).getOp() + " r " + r);
+					}
+				}
+				else if(e instanceof IntegerConstant)
+					result = null;
+				else if(e instanceof SymbolicInteger)
+					result = null;
+				else if(e instanceof BinaryNonLinearIntegerExpression){
+					Constraint l = getConFromExpression(((BinaryNonLinearIntegerExpression)e).left);
+					Constraint r = getConFromExpression(((BinaryNonLinearIntegerExpression)e).right);
+					switch(((BinaryNonLinearIntegerExpression) e).op){
+						case DIV:case REM:
+							IntegerExpression el = ((BinaryNonLinearIntegerExpression) e).right;
+							Comparator c = Comparator.NE;
+							IntegerExpression er = new IntegerConstant(0);
+							NonLinearIntegerConstraint n = new NonLinearIntegerConstraint(el, c, er);
+							result = linkCon(l,r);
+							result = linkCon(result, n);
+							break;
+						case PLUS: case MINUS: case MUL: case AND: case OR: case XOR: case SHIFTL: case SHIFTR: case SHIFTUR:
+							result = linkCon(l, r);
+							break;
+						  default: throw new RuntimeException("## Error: BinaryLinearSolution solution: l " + l + " op " + ((BinaryLinearIntegerExpression) e).getOp() + " r " + r);
+					}	
+				}else if(e instanceof FuncIntegerExpression){
+					
+					for(Integer i : ((FuncIntegerExpression)e).getArgKeySet()){
+						Expression arg = ((FuncIntegerExpression)e).getArgExpression(i);
+						Constraint tmp = getConFromExpression(arg);
+						result = linkCon(result, tmp);
+					}
+					for(String s : ((FuncIntegerExpression)e).getFiledKeySet()){
+						Expression filed = ((FuncIntegerExpression)e).getFiledExpression(s);
+						Constraint tmp = getConFromExpression(filed);
+						result = linkCon(result, tmp);
+					}
+					//result = null;
+				}
+				
+			}
+		  	else if (e instanceof RealExpression){
+			  if (e instanceof BinaryRealExpression){
+					Constraint l = getConFromExpression(((BinaryRealExpression)e).getLeft());
+					Constraint r = getConFromExpression(((BinaryRealExpression)e).getRight());
+					switch(((BinaryRealExpression)e).getOp()){
+					   case PLUS:  case MINUS: 	case MUL:   
+						   result = linkCon(l,r);
+						   break;	
+					   case DIV:   case REM: 	
+						   RealExpression el = ((BinaryRealExpression) e).getRight();
+						   Comparator c = Comparator.NE;
+						   RealExpression er = new RealConstant(0);
+						   RealConstraint n = new RealConstraint(el, c, er);
+						   result = linkCon(l,r);
+						   result = linkCon(result, n);
+						   break;
+			           default:    throw new RuntimeException("## Error: BinaryRealConstraint solution: l " + l + " op " + ((BinaryRealExpression)e).getOp() + " r " + r);
+					}
+				}
+				else if (e instanceof MathRealExpression){
+					
+					Constraint a1 = ((MathRealExpression)e).getArg1()==null?null:getConFromExpression(((MathRealExpression)e).getArg1());
+					Constraint a2 = ((MathRealExpression)e).getArg2()==null?null:getConFromExpression(((MathRealExpression)e).getArg2());
+				    
+					switch(((MathRealExpression)e).getOp()){
+					   case COS:  case SIN: case COSH:  case SINH: case EXP: case GEX:	case TAN:case ATAN:	case ATAN2:
+						   result = linkCon(a1, a2);
+						   break;
+					   case ASIN: case ACOS: //e>=-1 e <=1
+						   	RealExpression eArg = ((MathRealExpression)e).getArg1();
+					   		Comparator c1 = Comparator.GE;
+					   		Comparator c2 = Comparator.LE;
+					   		RealExpression eCon1 = new RealConstant(-1);
+					   		RealExpression eCon2 = new RealConstant(1);
+					   		RealConstraint n1 = new RealConstraint(eArg, c1, eCon1);
+					   		RealConstraint n2 = new RealConstraint(eArg, c2, eCon2);
+					   		n1.and = n2;
+					   		n2.and = null;
+					   		result = linkCon(a1, n1);
+						   break;
+					   case LOG:	case SQRT:	case LOG10:
+						   RealExpression eLog = ((MathRealExpression)e).getArg1();
+						   Comparator cLog = Comparator.GT;
+						   RealExpression e0 = new RealConstant(0);
+						   RealConstraint nLog = new RealConstraint(eLog, cLog, e0);
+						   nLog.and = null;
+						   result = linkCon(a1, nLog);
+						   break;
+					   case POW: //ÌØÊâ´¦Àí,Ö±½Ó°ÑpowÕûÌå×÷ÎªÔ¼Êø,È»ºóÔÙ¾ßÌå¼ÆËãµÄÊ±ºòµ¥¶À´¦Àí
+						   Comparator powc = Comparator.GT;
+						   RealExpression pow0 = new RealConstant(0);
+						   RealConstraint cpow = new RealConstraint((RealExpression)e, powc, pow0);
+						   result = linkCon(a1, a2);
+						   result = linkCon(result, cpow);
+						   break;
+			           default:   throw new
+			           	RuntimeException("## Error: MathRealExpression solution: math function " + ((MathRealExpression)e).getOp());
+					}
+				}
+				else if (e instanceof RealConstant){
+					result =  null;
+				}
+				else if (e instanceof SymbolicReal){
+					result = null;
+				}else if(e instanceof FuncRealExpression){
+					
+					for(Integer i : ((FuncRealExpression)e).getArgKeySet()){
+						Expression arg = ((FuncRealExpression)e).getArgExpression(i);
+						Constraint tmp = getConFromExpression(arg);
+						result = linkCon(result, tmp);
+					}
+					for(String s : ((FuncRealExpression)e).getFiledKeySet()){
+						Expression filed = ((FuncRealExpression)e).getFiledExpression(s);
+						Constraint tmp = getConFromExpression(filed);
+						result = linkCon(result, tmp);
+					}
+					//result = null;
+				}
+			} else if (e == null) result = null;//Lyra add
+			else {
+				throw new RuntimeException( "## Error: Expression Location Error: " + this);
+			}
+		  return result;
+	  }
+	
+	public Boolean solve(){
+		System.out.println("Begin Solving...");
+		if(!SymbolicInstructionFactory.TrueFalse)
+			return solve_classical();
+		else
+			return solve_conservative();
+	}
+	
+	public Boolean solve_conservative(){
+		Boolean result= Boolean.FALSE;
+		int time = 1;
+		
+		
+		Constraint c = realpc.header;
+		
+		
+		ArrayList<Constraint> cList = getDomainCon(c);
+		int cn = realpc.count;
+		Set<Object> varSet = variablesIn(realpc);
+		
+		int bud = SymbolicInstructionFactory.mlpm_int;
+		
+		while(!result&&time <6){		
+			Dimension dim =  new Dimension();
+			Port p = new CSP_Random_Port(c, cn, varSet, cList);
+			if(type == 1){
+				double prob = SymbolicInstructionFactory.mlpm_double;		
+				p.setParameters1(SymbolicInstructionFactory.complex , prob, varSet.size());	
+			}
+			else {
+				
+				p.setParameters2(SymbolicInstructionFactory.complex ,bud);
+			} 
+			dim = p.getDim();
+			DynamicBoundary m = new DynamicBoundary(dim); 
+
+			double[] best = null;
+			double[] unSat = null; 
+		
+			m.setParameters(p);
+	
+			best = m.optimization();
+			unSat = m.getSatValue();
+			if(unSat.length == 0){
+				((CSP_Random_Port)p).setResult(best);			
+				PathCondition.flagSolved = true;
+				result = Boolean.TRUE;
+				return result;
+			}else{
+				//if(InstructionFactory.conswitch) System.out.println("-f-"+c);
+					((CSP_Random_Port)p).setResult(best);
+					double NoAnswerProbability = m.getNoAnswerProbability(unSat);
+					System.out.println(NoAnswerProbability);
+					if(SymbolicInstructionFactory.NotECS > NoAnswerProbability)
+						SymbolicInstructionFactory.NotECS = NoAnswerProbability;
+					if(NoAnswerProbability>0.9){
+						System.out.println("\tUnSolved");
+						break;
+					}	
+			}
+			time++;
+			bud*=2;
+		}
+		result = Boolean.FALSE;
+		
+		return result;
+	}
+	
+	public Boolean solve_classical() {
+        Boolean result= Boolean.FALSE;
+		Constraint c = realpc.header;
+		ArrayList<Constraint> cList = getDomainCon(c);
+		int cn = realpc.count;
+		Set<Object> varSet = variablesIn(realpc);
+		
+		Dimension dim =  new Dimension();
+		Port p = new CSP_Random_Port(c, cn, varSet, cList);
+		if(type == 1){
+			double prob = SymbolicInstructionFactory.mlpm_double;		
+			p.setParameters1(SymbolicInstructionFactory.complex , prob, varSet.size());		
+		}
+		else {
+			int bud = SymbolicInstructionFactory.mlpm_int;
+			p.setParameters2(SymbolicInstructionFactory.complex ,bud);
+		}
+		dim = p.getDim();
+		DynamicBoundary m = new DynamicBoundary(dim); 
+	
+		double[] best = null;
+		double[] unSat = null; 
+		
+		m.setParameters(p);
+	
+		best = m.optimization();
+		unSat = m.getSatValue();
+		if(unSat.length == 0){
+			((CSP_Random_Port)p).setResult(best);			
+			PathCondition.flagSolved = true;
+			result = Boolean.TRUE;
+		}else{
+			if(InstructionFactory.conswitch) System.out.println("-f-"+c);
+			((CSP_Random_Port)p).setResult(best);
+			
+			double NoAnswerProbability = m.getNoAnswerProbability(unSat);
+			//System.out.println(NoAnswerProbability);
+
+			if(SymbolicInstructionFactory.NotECS > NoAnswerProbability){
+				SymbolicInstructionFactory.NotECS = NoAnswerProbability;
+				System.out.println(NoAnswerProbability);
+			}
+			result = Boolean.FALSE;
+			System.out.println("\tUnSolved");
+		}
+		return result;
+	}
+	
+	public void post(Object constraint) {
+		pb.post((choco.Constraint)constraint);
+	}
+
+	public Object and(int value, Object exp) {
+		throw new RuntimeException("## Error Choco does not support bitwise AND");
+	}
+
+	public Object and(Object exp, int value) {
+		throw new RuntimeException("## Error Choco does not support bitwise AND");
+	}
+
+	public Object and(Object exp1, Object exp2) {
+		throw new RuntimeException("## Error Choco does not support bitwise AND");
+	}
+
+	@Override
+	public Object or(int value, Object exp) {
+		throw new RuntimeException("## Error Choco does not support bitwise OR");
+	}
+
+	@Override
+	public Object or(Object exp, int value) {
+		throw new RuntimeException("## Error Choco does not support bitwise OR");
+	}
+
+
+	public Object or(Object exp1, Object exp2) {
+		throw new RuntimeException("## Error Choco does not support bitwise OR");
+	}
+
+
+	public Object shiftL(int value, Object exp) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object shiftL(Object exp, int value) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object shiftR(int value, Object exp) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object shiftR(Object exp, int value) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object xor(int value, Object exp) {
+		throw new RuntimeException("## Error Choco does not support bitwise XOR");
+	}
+
+	public Object xor(Object exp, int value) {
+		throw new RuntimeException("## Error Choco does not support bitwise XOR");
+	}
+
+	public Object xor(Object exp1, Object exp2) {
+		throw new RuntimeException("## Error Choco does not support bitwise XOR");
+	}
+
+	public Object shiftL(Object exp1, Object exp2) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object shiftR(Object exp1, Object exp2) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object shiftUR(int value, Object exp) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+
+	}
+
+	public Object shiftUR(Object exp, int value) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	public Object shiftUR(Object exp1, Object exp2) {
+		throw new RuntimeException("## Error Choco does not support bitwise SHIFT");
+	}
+
+	@Override
+	public void postLogicalOR(Object[] constraints) {
+
+		choco.Constraint [] choco_constraints = new choco.Constraint[constraints.length];
+		for (int i =0; i<constraints.length; i++)
+			choco_constraints[i] = (choco.Constraint) constraints[i];
+		Object orCon = ((RealProblem) pb).or(choco_constraints);
+		choco.Constraint temp = (choco.Constraint) orCon;
+		pb.post(temp);
+
+	}
+
+}

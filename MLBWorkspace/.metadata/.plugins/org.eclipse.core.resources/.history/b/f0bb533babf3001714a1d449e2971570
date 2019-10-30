@@ -1,0 +1,679 @@
+import org.junit.Test;
+
+public class program_example_Test{
+	@Test
+	public void test0(){
+		program.example(-7.542143759991049,-48.72017086698533);
+	}
+
+	@Test
+	public void test1(){
+		 program.example(-100.0,-100.0);
+	}
+
+	@Test
+	public void test2(){
+		 program.example(-57.40704230137859,91.83099711393237);
+	}
+
+	@Test
+	public void test3(){
+		 program.example(2.705950716788971,5.245023045743077);
+	}
+
+	@Test
+	public void test4(){
+		 program.example(-45.64246197751767,-81.34204164725729);
+	}
+
+	@Test
+	public void test5(){
+		 program.example(35.7807129231897,0.22962324114736532);
+	}
+
+	@Test
+	public void test6(){
+		 program.example(-0.2792878550500859,-28.739797255553327);
+	}
+
+	@Test
+	public void test7(){
+		 program.example(0.0,-24.891793646127823);
+	}
+
+	@Test
+	public void test8(){
+		 program.example(0.3852436006344391,-15.261887626700755);
+	}
+
+	@Test
+	public void test9(){
+		 program.example(3.68787135608668,5.615587534522022);
+	}
+
+	@Test
+	public void test10(){
+		 program.example(34.211494487426194,-8.472827575686352);
+	}
+
+	@Test
+	public void test11(){
+		 program.example(100.0,100.0);
+	}
+
+	@Test
+	public void test12(){
+		 program.example(-0.9927832245049046,-0.9927832245049047);
+	}
+
+	@Test
+	public void test13(){
+		 program.example(0.0,-1.700244288513645E-17);
+	}
+
+	@Test
+	public void test14(){
+		 program.example(4.592805773267622E-4,4.592805773268224E-4);
+	}
+
+	@Test
+	public void test15(){
+		 program.example(1.7294400924094333,65.39453628999331);
+	}
+
+	@Test
+	public void test16(){
+		 program.example(2.845092304953634,6.213380141943858);
+	}
+
+	@Test
+	public void test17(){
+		 program.example(40.47061888798669,45.30520886852355);
+	}
+
+	@Test
+	public void test18(){
+		 program.example(0.8242340786642046,32.89602649745885);
+	}
+
+	@Test
+	public void test19(){
+		 program.example(1.261002242824307,7.982735270477356);
+	}
+
+	@Test
+	public void test20(){
+		 program.example(0.5958430248983717,18.412646044313632);
+	}
+
+	@Test
+	public void test21(){
+		 program.example(2.6338279104568407,26.3933286958181);
+	}
+
+	@Test
+	public void test22(){
+		 program.example(1.8802489110082696E-10,1.7875602664141115E-11);
+	}
+
+	@Test
+	public void test23(){
+		 program.example(3.572776677825222E-5,2.722757978908599E-6);
+	}
+
+	@Test
+	public void test24(){
+		 program.example(1.6830699808112062,48.31693001918879);
+	}
+
+	@Test
+	public void test25(){
+		 program.example(21.402211386563167,28.59778861343683);
+	}
+
+	@Test
+	public void test26(){
+		 program.example(1.8522236887408745,54.86535932418594);
+	}
+
+	@Test
+	public void test27(){
+		 program.example(1.2462270293406377,43.81182931254182);
+	}
+
+	@Test
+	public void test28(){
+		 program.example(1.6255594559971125,42.22400808139963);
+	}
+
+	@Test
+	public void test29(){
+		 program.example(1.4786049574927036,27.291788858214606);
+	}
+
+	@Test
+	public void test30(){
+		 program.example(1.1716630477420265,14.84786598045294);
+	}
+
+	@Test
+	public void test31(){
+		 program.example(0.8591052684995741,13.859105268499574);
+	}
+
+	@Test
+	public void test32(){
+		 program.example(1.0843613405920867,13.430391241683619);
+	}
+
+	@Test
+	public void test33(){
+		 program.example(0.8722775229831825,18.90838070098144);
+	}
+
+	@Test
+	public void test34(){
+		 program.example(0.7091520165996087,37.53265079797231);
+	}
+
+	@Test
+	public void test35(){
+		 program.example(0.6337283418300643,42.42879704568446);
+	}
+
+	@Test
+	public void test36(){
+		 program.example(0.9929166516942587,13.992916651694259);
+	}
+
+	@Test
+	public void test37(){
+		 program.example(0.7091520683331513,19.28855287912041);
+	}
+
+	@Test
+	public void test38(){
+		 program.example(0.7087381923593864,19.30907062367008);
+	}
+
+	@Test
+	public void test39(){
+		 program.example(0.93756247456728,12.333286810352273);
+	}
+
+	@Test
+	public void test40(){
+		 program.example(7.285365029461582E-11,1.0000080363355484);
+	}
+
+	@Test
+	public void test41(){
+		 program.example(0.7090028479722968,19.295809982856706);
+	}
+
+	@Test
+	public void test42(){
+		 program.example(0.8953217659613517,7.858176261627252);
+	}
+
+	@Test
+	public void test43(){
+		 program.example(0.7091520165996087,19.288555393975575);
+	}
+
+	@Test
+	public void test44(){
+		 program.example(0.6829982573713844,4.819458637890475);
+	}
+
+	@Test
+	public void test45(){
+		 program.example(0.9988137906545964,9.954694819631102);
+	}
+
+	@Test
+	public void test46(){
+		 program.example(0.7091520165996087,0.7091520165996089);
+	}
+
+	@Test
+	public void test47(){
+		 program.example(0.003116257617651021,0.0031163210415682987);
+	}
+
+	@Test
+	public void test48(){
+		 program.example(0.9451830531263254,145.3739661684255);
+	}
+
+	@Test
+	public void test49(){
+		 program.example(0.7091520165996087,64.9370368101951);
+	}
+
+	@Test
+	public void test50(){
+		 program.example(0.3603729078374869,91.9746583617891);
+	}
+
+	@Test
+	public void test51(){
+		 program.example(0.9951796911147448,10.987620127258486);
+	}
+
+	@Test
+	public void test52(){
+		 program.example(0.7091520165996087,19.288555393975567);
+	}
+
+	@Test
+	public void test53(){
+		 program.example(0.36665051432895956,67.67936171104755);
+	}
+
+	@Test
+	public void test54(){
+		 program.example(0.7670712524041363,5.971959982921021);
+	}
+
+	@Test
+	public void test55(){
+		 program.example(0.7091520165996087,6.9549012344923735);
+	}
+
+	@Test
+	public void test56(){
+		 program.example(0.2793601271357886,50.103355010367835);
+	}
+
+	@Test
+	public void test57(){
+		 program.example(35.27026427695239,68.710531746447);
+	}
+
+	@Test
+	public void test58(){
+		 program.example(1.9464893169504003,3.788820661002036);
+	}
+
+	@Test
+	public void test59(){
+		 program.example(7.792678189479403,95.24381217157048);
+	}
+
+	@Test
+	public void test60(){
+		 program.example(10.3173686435684,26.034808040049768);
+	}
+
+	@Test
+	public void test61(){
+		 program.example(7.904016670988007,9.045556453909844);
+	}
+
+	@Test
+	public void test62(){
+		 program.example(-93.6293636545169,100.0);
+	}
+
+	@Test
+	public void test63(){
+		 program.example(49.201941591325834,82.82215946019454);
+	}
+
+	@Test
+	public void test64(){
+		 program.example(0.009806585142505554,9.578763605137011E-5);
+	}
+
+	@Test
+	public void test65(){
+		 program.example(0.004833099336368166,2.335884917168667E-5);
+	}
+
+	@Test
+	public void test66(){
+		 program.example(5.213663106127726,21.47800299410234);
+	}
+
+	@Test
+	public void test67(){
+		 program.example(22.224415536239047,27.775584463760953);
+	}
+
+	@Test
+	public void test68(){
+		 program.example(54.56996521180423,85.86265537545873);
+	}
+
+	@Test
+	public void test69(){
+		 program.example(0.809717432082211,0.65564231981781);
+	}
+
+	@Test
+	public void test70(){
+		 program.example(1.7889034249663947,3.193508214499983);
+	}
+
+	@Test
+	public void test71(){
+		 program.example(8.769777163995386,28.428499531003666);
+	}
+
+	@Test
+	public void test72(){
+		 program.example(0.987261674479712,0.9872616744797121);
+	}
+
+	@Test
+	public void test73(){
+		 program.example(0.7091520165996088,0.0013321339126735885);
+	}
+
+	@Test
+	public void test74(){
+		 program.example(0.014666769021991632,0.014821480744916841);
+	}
+
+	@Test
+	public void test75(){
+		 program.example(0.999808649313107,49.000191509134275);
+	}
+
+	@Test
+	public void test76(){
+		 program.example(0.7091520165996087,49.29084798340039);
+	}
+
+	@Test
+	public void test77(){
+		 program.example(0.6714898245524723,49.328510175447526);
+	}
+
+	@Test
+	public void test78(){
+		 program.example(0.9996596045231604,49.000340395476854);
+	}
+
+	@Test
+	public void test79(){
+		 program.example(0.7091520178012197,49.290847982198784);
+	}
+
+	@Test
+	public void test80(){
+		 program.example(0.7091509502993004,49.29084907594495);
+	}
+
+	@Test
+	public void test81(){
+		 program.example(0.9998192857813637,0.9998192857813638);
+	}
+
+	@Test
+	public void test82(){
+		 program.example(0.006003743300563175,2.8001150555397307E-5);
+	}
+
+	@Test
+	public void test83(){
+		 program.example(0.160375578616827,0.16037597249067384);
+	}
+
+	@Test
+	public void test84(){
+		 program.example(0.9899747906768782,0.9899747906768783);
+	}
+
+	@Test
+	public void test85(){
+		 program.example(0.7091520165996087,0.5028965826059132);
+	}
+
+	@Test
+	public void test86(){
+		 program.example(0.0837271927302563,0.003756330553833784);
+	}
+
+	@Test
+	public void test87(){
+		 program.example(7.541333042311975,56.999310220249825);
+	}
+
+	@Test
+	public void test88(){
+		 program.example(7.79652700389741,61.78583332250152);
+	}
+
+	@Test
+	public void test89(){
+		 program.example(5.36744528162059,92.59299116329498);
+	}
+
+	@Test
+	public void test90(){
+		 program.example(7.475685932275014,56.68935671422073);
+	}
+
+	@Test
+	public void test91(){
+		 program.example(2.1448069389147095,5.393068758064095);
+	}
+
+	@Test
+	public void test92(){
+		 program.example(0.9082394246049459,0.908239424604946);
+	}
+
+	@Test
+	public void test93(){
+		 program.example(7.267849873849734,53.82097927744385);
+	}
+
+	@Test
+	public void test94(){
+		 program.example(0.9980309615016959,0.9990149956340475);
+	}
+
+	@Test
+	public void test95(){
+		 program.example(0.7354470670881534,0.7354470670881535);
+	}
+
+	@Test
+	public void test96(){
+		 program.example(4.709599876173514,22.434103669450934);
+	}
+
+	@Test
+	public void test97(){
+		 program.example(6.5505980986351995,43.4494019013648);
+	}
+
+	@Test
+	public void test98(){
+		 program.example(-9.951433483934881,100.0);
+	}
+
+	@Test
+	public void test99(){
+		 program.example(7.612311667875738E-5,1.0000000057947287);
+	}
+
+	@Test
+	public void test100(){
+		 program.example(5.6588421677302526E-5,1.0000000032022494);
+	}
+
+	@Test
+	public void test101(){
+		 program.example(6.2827167741177306,40.327888049018235);
+	}
+
+	@Test
+	public void test102(){
+		 program.example(0.8993038244392689,0.899303824439269);
+	}
+
+	@Test
+	public void test103(){
+		 program.example(0.7091520165996087,0.7091520165996088);
+	}
+
+	@Test
+	public void test104(){
+		 program.example(0.6044750854319945,0.6044750854319946);
+	}
+
+	@Test
+	public void test105(){
+		 program.example(0.9998668420813018,1.9997235548416818);
+	}
+
+	@Test
+	public void test106(){
+		 program.example(0.7091520165996087,49.29084798340039);
+	}
+
+	@Test
+	public void test107(){
+		 program.example(0.7091520165975319,1.5028965826392324);
+	}
+
+	@Test
+	public void test108(){
+		 program.example(0.9952578175868053,49.00508827452401);
+	}
+
+	@Test
+	public void test109(){
+		 program.example(0.7091520165996167,49.29084798340039);
+	}
+
+	@Test
+	public void test110(){
+		 program.example(0.7091520165996074,49.29084798341808);
+	}
+
+	@Test
+	public void test111(){
+		 program.example(3.563759610625797,13.700382562327734);
+	}
+
+	@Test
+	public void test112(){
+		 program.example(2.1036540439216136,5.425360336507757);
+	}
+
+	@Test
+	public void test113(){
+		 program.example(0.062033059594654216,1.0038481004826738);
+	}
+
+	@Test
+	public void test114(){
+		 program.example(0.49796206627705036,1.2479662194509096);
+	}
+
+	@Test
+	public void test115(){
+		 program.example(0.25769187611347555,0.5076336042003874);
+	}
+
+	@Test
+	public void test116(){
+		 program.example(0.43228349107410347,0.6574826926042262);
+	}
+
+	@Test
+	public void test117(){
+		 program.example(3.4064708014259963,75.60857342954966);
+	}
+
+	@Test
+	public void test118(){
+		 program.example(2.086321416165725,5.440201510447261);
+	}
+
+	@Test
+	public void test119(){
+		 program.example(0.3006102688820794,1.0903665337573563);
+	}
+
+	@Test
+	public void test120(){
+		 program.example(3.7292361903288054,53.23644381833631);
+	}
+
+	@Test
+	public void test121(){
+		 program.example(0.18981885177895602,1.0360311964906814);
+	}
+
+	@Test
+	public void test122(){
+		 program.example(0.28481362052177056,0.5323141874322815);
+	}
+
+	@Test
+	public void test123(){
+		 program.example(3.551543956929976,42.15517350091045);
+	}
+
+	@Test
+	public void test124(){
+		 program.example(6.393943271759589,43.60605672824041);
+	}
+
+	@Test
+	public void test125(){
+		 program.example(6.581870999596944,56.0792153179556);
+	}
+
+	@Test
+	public void test126(){
+		 program.example(0.046453011416506006,1.114888238525593);
+	}
+
+	@Test
+	public void test127(){
+		 program.example(1.651181890428888,44.79008539239898);
+	}
+
+	@Test
+	public void test128(){
+		 program.example(0.3080589784639141,1.094900334212233);
+	}
+
+	@Test
+	public void test129(){
+		 program.example(0.8865910547698199,49.11340894523018);
+	}
+
+	@Test
+	public void test130(){
+		 program.example(2.148416924183718E-5,49.99997851583076);
+	}
+
+	@Test
+	public void test131(){
+		 program.example(0.10752939650254234,49.89247060349746);
+	}
+
+	@Test
+	public void test132(){
+		 program.example(0.7279306367148782,49.27206969377368);
+	}
+
+	@Test
+	public void test133(){
+		 program.example(0.7091520165996087,49.290848017530365);
+	}
+
+	@Test
+	public void test134(){
+		 program.example(0.3247756466735107,49.68072667989721);
+	}
+
+}

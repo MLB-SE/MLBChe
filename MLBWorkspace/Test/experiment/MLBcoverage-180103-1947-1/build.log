@@ -1,0 +1,65 @@
+
+compile-programs:
+
+compile:
+     [echo] >>> Compiling coral
+    [mkdir] Created dir: /home/mlb/MLBWorkspace/Test/experiment/build/programs/coral
+    [javac] Compiling 1 source file to /home/mlb/MLBWorkspace/Test/experiment/build/programs/coral
+    [javac] warning: [options] bootstrap class path not set in conjunction with -source 1.6
+    [javac] 1 warning
+
+compile-drivers-jpf-MLB:
+
+compile-drivers:
+     [echo] >>> Compiling JPF[MLB] drivers for coral
+    [mkdir] Created dir: /home/mlb/MLBWorkspace/Test/experiment/build/drivers/MLB/coral
+    [javac] Compiling 84 source files to /home/mlb/MLBWorkspace/Test/experiment/build/drivers/MLB/coral
+
+generate-tests-jpf-MLB:
+
+generate-tests:
+
+echo-timestamped:
+     [echo] 2018-01-03 19:47:28.459 -- MLB/coral: begin test generation
+     [echo] >>> Generating JPF[MLB] tests for coral
+    [mkdir] Created dir: /home/mlb/MLBWorkspace/Test/experiment/gen/MLB/coral
+    [apply] Result: 134
+
+echo-timestamped:
+     [echo] 2018-01-03 19:50:42.023 -- MLB/coral: end test generation
+    [apply] Sample36Test.java.log does not seem to contain JPF generated method summaries.  Aborting.
+    [apply] Result: 3
+
+BUILD SUCCESSFUL
+
+compile-tests-jpf-MLB:
+
+compile-tests:
+     [echo] >>> Compiling JPF[MLB] tests for coral
+    [mkdir] Created dir: /home/mlb/MLBWorkspace/Test/experiment/build/tests/MLB/coral
+    [javac] Compiling 83 source files to /home/mlb/MLBWorkspace/Test/experiment/build/tests/MLB/coral
+
+BUILD SUCCESSFUL
+
+compile-tests-jpf-MLB:
+
+compile-tests:
+     [echo] >>> Compiling JPF[MLB] tests for coral
+
+run-tests-jpf-MLB:
+
+run-tests:
+     [echo] >>> Collecting coverage of JPF[MLB] tests for coral
+
+report:
+  [taskdef] Could not load definitions from resource org/jacoco/ant/antlib.xml. It could not be found.
+
+report-MLB:
+[jacoco:report] Loading execution data file /home/mlb/MLBWorkspace/Test/experiment/build/tests/MLB/coral/jacoco.exec
+[jacoco:report] Writing bundle 'coral' with 1 classes
+[jacoco:merge] Loading execution data file /home/mlb/MLBWorkspace/Test/experiment/build/tests/MLB/coral/jacoco.exec
+[jacoco:merge] Writing merged execution data to /home/mlb/MLBWorkspace/Test/experiment/coverage/merged-MLB.exec
+
+report:
+
+BUILD SUCCESSFUL

@@ -1,0 +1,48 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample44.main()
+
+====================================================== search started: 1/3/18 7:19 PM
+method name benchmark44(DD)V
+method name benchmark44(DD)V
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.9999999999999998
+	UnSolved
+Begin Solving...
+sucess
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+elapsed time:       00:00:08
+states:             new=6,visited=0,backtracked=6,end=4
+search:             maxDepth=3,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=2
+heap:               new=558,released=40,maxLive=554,gcCycles=5
+instructions:       10044
+max memory:         485MB
+loaded code:        classes=57,methods=1263
+
+====================================================== search finished: 1/3/18 7:19 PM
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark44(61.66432524978856,48.54411136308465); 
+coral.tests.JPFBenchmark.benchmark44(0.3391416432111072,0.3391416432111072); 
+coral.tests.JPFBenchmark.benchmark44(44.5151185816037,69.38379627252377); 
+coral.tests.JPFBenchmark.benchmark44(20.21209902323061,0.029747638210429805); 
+coral.tests.JPFBenchmark.benchmark44(0.5541383184138198,0.5541383184138198); 
+coral.tests.JPFBenchmark.benchmark44(14.929498618894812,93.62248158673327); 
+

@@ -1,0 +1,611 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../.resources/report.gif" type="image/gif"/><title>JPFBenchmark.java</title><link rel="stylesheet" href="../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../.sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">MLB Coverage Evaluation</a> &gt; <a href="../index.html" class="el_bundle">coral</a> &gt; <a href="index.source.html" class="el_package">coral.tests</a> &gt; <span class="el_source">JPFBenchmark.java</span></div><h1>JPFBenchmark.java</h1><pre class="source lang-java linenums">package coral.tests;
+
+<span class="nc" id="L3">public class JPFBenchmark {</span>
+
+<span class="fc" id="L5">  public static String sucess = &quot;sucess&quot;;</span>
+
+  // sin(x) + cos(y) &gt; 1.0
+  public static void benchmark01(double x, double y) {
+<span class="fc bfc" id="L9" title="All 2 branches covered.">    if (Math.sin(x) + Math.cos(y) &gt; 1) {</span>
+<span class="fc" id="L10">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L12">  }</span>
+
+  // sin(x) - cos(y) &lt; 0.0000000001
+  public static void benchmark02(double x, double y) {
+<span class="fc bfc" id="L16" title="All 2 branches covered.">    if (Math.sin(x) - Math.cos(y) &lt; 0.0000000001) {</span>
+<span class="fc" id="L17">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L19">  }</span>
+
+  // sin(x) - cos(y) == 0.0
+  public static void benchmark03(double x, double y) {
+<span class="pc bpc" id="L23" title="1 of 2 branches missed.">    if (Math.sin(x) - Math.cos(y) == 0) {</span>
+<span class="nc" id="L24">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L26">  }</span>
+
+  // exp(x) &gt; 0.0
+  public static void benchmark04(double x) {
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">    if (Math.exp(x) &gt; 0) {</span>
+<span class="fc" id="L31">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L33">  }</span>
+
+  // sin A + sin B + sin C = 4 * cos A * cos B * cos C
+  public static void benchmark05(double x, double y, double z) {
+<span class="fc" id="L37">    if (Math.sin(x) + Math.sin(y) + Math.sin(z) == 4 * Math.cos(x)</span>
+<span class="pc bpc" id="L38" title="1 of 2 branches missed.">        * Math.cos(y) * Math.cos(z)) {</span>
+<span class="nc" id="L39">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L41">  }</span>
+
+  // cos A + cos B + cos C &gt; 4 sin A/2 sin B/2 sin C/2
+  public static void benchmark06(double x, double y, double z) {
+<span class="fc" id="L45">    if (Math.cos(x) + Math.cos(y) + Math.cos(z) &gt; 4 * Math.sin(x / 2)</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        * Math.sin(y / 2) * Math.sin(z / 2)) {</span>
+<span class="fc" id="L47">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L49">  }</span>
+
+  // (sin(2x - y)/(cos(2y + y) + 1) = cos(2z + x)/(sin(2w + y) - 1)
+  public static void benchmark07(double x, double y, double z, double w) {
+<span class="fc" id="L53">    if (Math.sin(2 * x - y) / (Math.cos(2 * y + y) + 1) == Math.cos(2 * z + x)</span>
+<span class="pc bpc" id="L54" title="1 of 2 branches missed.">        / (Math.sin(2 * w + y) - 1)) {</span>
+<span class="nc" id="L55">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L57">  }</span>
+
+  // cos(3x+2y-z) * sin(z+x+y) == cos(z*x*y)
+  public static void benchmark08(double x, double y, double z) {
+<span class="fc" id="L61">    if (Math.cos(3 * x + 2 * y - z) * Math.sin(z + x + y) == Math</span>
+<span class="pc bpc" id="L62" title="1 of 2 branches missed.">        .cos(z * x * y)) {</span>
+<span class="nc" id="L63">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L65">  }</span>
+
+  // Math.sin(Math.cos(x*y)) &lt; Math.cos(Math.sin(x*y))
+  public static void benchmark09(double x, double y) {
+<span class="pc bpc" id="L69" title="1 of 2 branches missed.">    if (Math.sin(Math.cos(x * y)) &lt; Math.cos(Math.sin(x * y))) {</span>
+<span class="fc" id="L70">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L72">  }</span>
+
+  // Math.sin(x*Math.cos(y*Math.sin(z))) &gt; Math.cos(x*Math.sin(y*Math.cos(z)))
+  public static void benchmark10(double x, double y, double z) {
+<span class="fc bfc" id="L76" title="All 2 branches covered.">    if (Math.sin(x * Math.cos(y * Math.sin(z))) &gt; Math.cos(x</span>
+<span class="fc" id="L77">        * Math.sin(y * Math.cos(z)))) {</span>
+<span class="fc" id="L78">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L80">  }</span>
+
+  // asin(x) &lt; cos(y)*cos(z) - Math.atan(w)
+  public static void benchmark11(double x, double y, double z, double w) {
+<span class="fc bfc" id="L84" title="All 2 branches covered.">	  if(Math.asin(x) &lt; Math.cos(y) * Math.cos(z) - Math.atan(w)) {</span>
+<span class="fc" id="L85">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L87">  }</span>
+
+  // (asin(x) * Math.asin(y))-1 &lt; Math.atan(z) * Math.atan(w)  
+  public static void benchmark12(double x, double y, double z, double w) {
+<span class="fc bfc" id="L91" title="All 2 branches covered.">	  if((Math.asin(x) * Math.asin(y)) - 1 &lt; Math.atan(z) * Math.atan(w)) {</span>
+<span class="fc" id="L92">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L94">  }</span>
+
+  // sin(y) * Math.asin(x) &lt; cos(y)*cos(z) - Math.atan(w)
+  public static void benchmark13(double x, double y, double z, double w) {
+<span class="fc bfc" id="L98" title="All 2 branches covered.">	if(Math.sin(y) * Math.asin(x) &lt; Math.cos(y)*Math.cos(z) - Math.atan(w)) {</span>
+<span class="fc" id="L99">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L101">  }</span>
+
+  // sin(y) * Math.asin(x) - 300 &lt; cos(y)*cos(z) - Math.atan(w)
+  public static void benchmark14(double x, double y, double z, double w) {
+<span class="pc bpc" id="L105" title="1 of 2 branches missed.">	if(Math.sin(y) * Math.asin(x) - 300 &lt; Math.cos(y)*Math.cos(z) - Math.atan(w)) {</span>
+<span class="fc" id="L106">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L108">  }</span>
+
+  // ((Math.asin(1) * Math.asin(cos(9*57)))-1) &lt; (Math.atan(0) * Math.atan(0)) solução; x=1,y=513,z=0,w=0
+  public static void benchmark15(double x, double y, double z, double w) {
+<span class="fc bfc" id="L112" title="All 2 branches covered.">	  if(((Math.asin(x) * Math.asin(Math.cos(y)))-x) &lt; (Math.atan(z) * Math.atan(w))) {</span>
+<span class="fc" id="L113">		  System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L115">  }</span>
+
+	//((((tan_(($V4-$V1))*cos_(sin_(($V4/$V5))))-atan_((($V2+20.0)+$V3)))+asin_(($V2-15.0))) &lt; ((sin_(($V4*$V4))*cos_((($V1*$V4)*$V5)))-tan_((cos_((($V1*$V4)*$V1))+sin_($V4)))))  
+	public static void benchmark16(double x, double y, double z, double w, double v) {
+<span class="fc bfc" id="L119" title="All 2 branches covered.">		if(Math.tan(w-x)*Math.cos(Math.sin(w/v)) - Math.atan(y + 20 + z) + Math.asin(y-15) &lt; Math.sin(w * w) * Math.cos(x*w*v) - Math.tan(Math.cos(x*w*x)) + Math.sin(w)){</span>
+<span class="fc" id="L120">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L122">	}</span>
+
+  // Math.asin(x) * Math.acos(x) &lt; Math.atan(x)  
+  public static void benchmark17(double x) {
+<span class="fc bfc" id="L126" title="All 2 branches covered.">	if(Math.asin(x) * Math.acos(x) &lt; Math.atan(x)) {</span>
+<span class="fc" id="L127">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L129">  }</span>
+
+  // (1+Math.acos(x)) &lt; Math.asin(x)
+  public static void benchmark18(double x) {
+<span class="fc bfc" id="L133" title="All 2 branches covered.">	  if((1+Math.acos(x)) &lt; Math.asin(x)) {</span>
+<span class="fc" id="L134">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L136">  }</span>
+
+  // 3*Math.acos(x) &lt; Math.atan(y) + Math.asin(z)
+  public static void benchmark19(double x, double y, double z) {
+<span class="fc bfc" id="L140" title="All 2 branches covered.">	  if( 3*Math.acos(x) &lt; Math.atan(y) + Math.asin(z)) {</span>
+<span class="fc" id="L141">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L143">  }</span>
+
+  // sin(sin((x*y)) &lt; 0 &amp;&amp; cos(2x) &gt; 0.25
+  public static void benchmark20(double x, double y) {
+<span class="fc bfc" id="L147" title="All 4 branches covered.">	  if(Math.sin(Math.sin(x*y)) &lt; 0 &amp;&amp; Math.cos(2*x) &gt; 0.25) {</span>
+<span class="fc" id="L148">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L150">  }</span>
+
+  // cos(x*y) &lt; 0 &amp;&amp; sin(2x) &gt; 0.25
+	public static void benchmark21(double x, double y) {
+<span class="fc bfc" id="L154" title="All 4 branches covered.">		if( Math.cos(x*y) &lt; 0 &amp;&amp; Math.sin(2*x) &gt; 0.25) {</span>
+<span class="fc" id="L155">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L157">	}</span>
+
+  // (sin_(cos_(($V1*$V2))) &lt; cos_(sin_(($V2*$V3)))) &amp; 
+  // ((sin_((($V4*2.0)-$V2))/(cos_((($V6*2.0)+$V7))+1.0)) == (cos_((($V3*2.0)+$V1))/(sin_((($V4*2.0)+$V5))+1.0))))
+	public static void benchmark22(double x, double y, double z, double w, double v, double t, double q) {
+<span class="fc bfc" id="L162" title="All 2 branches covered.">		if((Math.sin(Math.cos(x*y)) &lt; Math.cos(Math.sin(y*z))) &amp;&amp; </span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">		   Math.sin(w*2.0 -y)/(Math.cos(t*2.0+q)+1.0) == (Math.cos(z*2.0+x)/(Math.sin(w*2.0+v)+1.0))) {</span>
+<span class="fc" id="L164">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L166">	}</span>
+
+  // (sin(2x - y)/(cos(2y + x) + 1) = cos(2z + x)/(sin(2w + y) - 1) &amp;
+  // sin(x*y*z*w) &gt; 0 &amp;
+  // cos(x*y*z*w) &lt; 0
+
+  public static void benchmark23(double x, double y, double z, double w) {
+<span class="pc bpc" id="L173" title="1 of 2 branches missed.">	  if(Math.sin(2*x - y)/(Math.cos(2*y + x) + 1) == Math.cos(2*z + x)/(Math.sin(2*w + y) - 1) &amp;&amp;</span>
+<span class="nc bnc" id="L174" title="All 4 branches missed.">		 Math.sin(x*y*z*w) &gt; 0 &amp;&amp; Math.cos(x*y*z*w) &lt; 0) {</span>
+<span class="nc" id="L175">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L177">  }</span>
+
+  //  sin(cos(x*y)) &lt; cos(sin(x*z)) &amp;
+  // (sin(2w - y)/(cos(2y + v) + 1) = cos(2z + x)/(sin(2w + v) - 1)
+  public static void benchmark25(double x, double y, double z, double w, double v) {
+<span class="pc bpc" id="L182" title="1 of 4 branches missed.">	  if(Math.sin(Math.cos(x*y)) &lt; Math.cos(Math.sin(x*z)) &amp;&amp; (Math.sin(2*w - y)/(Math.cos(2*y + v) + 1) == Math.cos(2*z + x)/(Math.sin(2*w + v) - 1))) {</span>
+<span class="nc" id="L183">		  System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L185">  }</span>
+
+  // sin(cos(x*y)) &lt; cos(sin(x*z)) 
+  // (sin(2w - y)/(cos(2y + v) + 1) = cos(2z + x)/(sin(2w + v) - 1) 
+  // sin(x*y*z*w) &gt; 0 &amp;&amp; cos(x*y*z*w) &lt; 0
+	  public static void benchmark26(double x, double y, double z, double w, double v) {
+<span class="pc bpc" id="L191" title="5 of 8 branches missed.">		  if(Math.sin(Math.cos(x*y)) &lt; Math.cos(Math.sin(x*z)) &amp;&amp; (Math.sin(2*w - y)/(Math.cos(2*y + v) + 1) == Math.cos(2*z + x)/(Math.sin(2*w + v) - 1)) &amp;&amp;  Math.sin(x*y*z*w) &gt; 0 &amp;&amp; Math.cos(x*y*z*w) &lt; 0 ) {</span>
+<span class="nc" id="L192">			  System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L194">  }</span>
+
+  // sin(x*cos(y*sin(z))) &gt; cos(x*sin(y*cos(z))) &amp;&amp; sin(cos(x*y)) &lt; cos(sin(x*y))
+  public static void benchmark27(double x, double y, double z) {
+<span class="pc bpc" id="L198" title="1 of 4 branches missed.">	if(Math.sin(x*Math.cos(y*Math.sin(z))) &gt; Math.cos(x*Math.sin(y*Math.cos(z))) &amp;&amp; Math.sin(Math.cos(x*y)) &lt; Math.cos(Math.sin(x*y))) {</span>
+<span class="fc" id="L199">      System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L201">  }</span>
+
+  // log($V1) == 2.0
+  public static void benchmark28(double x) {
+<span class="fc bfc" id="L205" title="All 2 branches covered.">	  if(Math.log(x) == 2) {</span>
+<span class="fc" id="L206">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L208">  }</span>
+
+  public static void benchmark29(double x) {
+<span class="fc bfc" id="L211" title="All 2 branches covered.">	  if(Math.exp(x) &gt; 5){</span>
+<span class="fc" id="L212">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L214">  }</span>
+
+  // log_10($v1) == 2.0
+  public static void benchmark30(double x) {
+<span class="fc bfc" id="L218" title="All 2 branches covered.">	  if(Math.log10(x) == 2){</span>
+<span class="fc" id="L219">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L221">  }</span>
+
+  public static void benchmark31(double x) {
+<span class="fc bfc" id="L224" title="All 2 branches covered.">	  if(Math.round(x) &gt; 5) {</span>
+<span class="fc" id="L225">			  System.out.println(&quot;sucess&quot;);</span>
+    }
+<span class="fc" id="L227">  }</span>
+
+  public static void benchmark32(double x) {
+<span class="fc bfc" id="L230" title="All 2 branches covered.">	  if(Math.sqrt(x) &gt; 5) {</span>
+<span class="fc" id="L231">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L233">  }</span>
+
+  // sqrt(sin($V1)) &gt; sqrt(cos($V1))
+  public static void benchmark33(double x) {
+<span class="fc bfc" id="L237" title="All 2 branches covered.">	  if(Math.sqrt(Math.sin(x)) &gt; Math.sqrt(Math.cos(x))) {</span>
+<span class="fc" id="L238">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L240">  }</span>
+
+  // sqrt(sin($V1)) &lt; sqrt(cos($V1))
+  public static void benchmark34(double x) {
+<span class="fc bfc" id="L244" title="All 2 branches covered.">	  if(Math.sqrt(Math.sin(x)) &lt; Math.sqrt(Math.cos(x))) {</span>
+<span class="fc" id="L245">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L247">  }</span>
+
+  //  1.0/sqrt(sin($V1)) &gt; sqrt(cos(exp($V2)))
+  public static void benchmark35(double x,double y) {
+<span class="pc bpc" id="L251" title="1 of 2 branches missed.">	  if(1.0/Math.sqrt(Math.sin(x)) &gt; Math.sqrt(Math.cos(Math.exp(y)))){</span>
+<span class="fc" id="L252">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L254">  }</span>
+
+  // ((log10($V3)*(1.0/sqrt(sin_($V1)))) == sqrt(cos_(exp($V2))))
+  public static void benchmark36(double x,double y,double z) {
+<span class="nc bnc" id="L258" title="All 2 branches missed.">	  if(Math.log10(z)*(1.0/Math.sqrt(Math.sin(x))) == Math.sqrt(Math.cos(Math.exp(y)))) {</span>
+<span class="nc" id="L259">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="nc" id="L261">  }</span>
+
+  // ((log10(tan_($V3))/(1.0/sqrt(sin_($V1)))) == sqrt(cos_(exp($V2))))
+  public static void benchmark37(double x,double y,double z) {
+<span class="fc bfc" id="L265" title="All 2 branches covered.">	  if(Math.log10(Math.tan(z))*(1.0/Math.sqrt(Math.sin(x))) == Math.sqrt(Math.cos(Math.exp(y)))) {</span>
+<span class="fc" id="L266">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L268">  }</span>
+
+  // (atan2_($V1,$V2) == 1.0)
+  public static void benchmark38(double x,double y) {
+<span class="fc bfc" id="L272" title="All 2 branches covered.">	  if(Math.atan2(x,y) == 1.0) {</span>
+<span class="fc" id="L273">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L275">  }</span>
+
+  // (pow_($V1,$V2) == 1.0)
+  public static void benchmark39(double x,double y) {
+<span class="fc bfc" id="L279" title="All 2 branches covered.">	  if(Math.pow(x,y) == 1.0) {</span>
+<span class="fc" id="L280">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L282">  }</span>
+
+  // pow(x,2) == x + y
+  public static void benchmark40(double x,double y) {
+<span class="pc bpc" id="L286" title="1 of 2 branches missed.">	  if(Math.pow(x,2) == x + y) {</span>
+<span class="nc" id="L287">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L289">  }</span>
+
+ // pow(x,2) == x + y &amp; x &gt;= -1 &amp; y &lt;=  2
+ 
+  public static void benchmark41(double x,double y) {
+<span class="fc bfc" id="L294" title="All 6 branches covered.">	  if(Math.pow(x,2) == x + y &amp;&amp;  x &gt;= -1 &amp;&amp; y &lt;=  2 ) {</span>
+<span class="fc" id="L295">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L297">  }</span>
+  // Math.pow(x,y) &gt; Math.pow(y,x) &amp; x &gt; 1 &amp; y &lt;= 10
+   public static void benchmark42(double x,double y) {
+<span class="fc bfc" id="L300" title="All 6 branches covered.">	  if(Math.pow(x,y) &gt; Math.pow(y,x) &amp;&amp; x &gt; 1 &amp;&amp; y &lt;= 10) {</span>
+<span class="fc" id="L301">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L303">  }</span>
+
+  // Math.pow(x,y) &gt; Math.pow(y,x) &amp;&amp; Math.exp(x,y) &gt; Math.exp(y,x) &amp;&amp; y &lt; x ^ 2
+
+  public static void benchmark43(double x,double y) {
+<span class="fc bfc" id="L308" title="All 6 branches covered.">	  if(Math.pow(x,y) &gt; Math.pow(y,x) &amp;&amp; Math.exp(y) &gt; Math.exp(x) &amp;&amp; y &lt; Math.pow(x,2)) {</span>
+<span class="fc" id="L309">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L311">  }</span>
+
+  // Math.pow(x,y) &gt; Math.pow(y,x) &amp;&amp; Math.exp(x,y) &lt; Math.exp(y,x)
+
+  public static void benchmark44(double x,double y) {
+<span class="fc bfc" id="L316" title="All 4 branches covered.">	  if(Math.pow(x,y) &gt; Math.pow(y,x) &amp;&amp; Math.exp(y) &lt; Math.exp(x)) {</span>
+<span class="fc" id="L317">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L319">  }</span>
+
+	// sqrt(Math.exp(x+y)) &lt; Math.pow(z,x) &amp;&amp; x &gt; 0 &amp;&amp; y &gt; 1 &amp;&amp; z &gt; 1 &amp;&amp; y &lt;= x + 2
+
+	public static void benchmark45(double x,double y,double z) {
+<span class="fc bfc" id="L324" title="All 10 branches covered.">		if(Math.sqrt(Math.exp(x+y)) &lt; Math.pow(z,x) &amp;&amp; x &gt; 0 &amp;&amp; y &gt; 1 &amp;&amp; z &gt; 1 &amp;&amp; y &lt;= x + 2) {</span>
+<span class="fc" id="L325">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L327">	}  	</span>
+
+  // Math.sqrt(e^(x + z)) &lt; z^x &amp;&amp; x &gt; 0 &amp;&amp; y &gt; 1 &amp;&amp; z &gt; 1 &amp;&amp; y &lt; 1 &amp;&amp; y &lt; x + 2 &amp;&amp; w = x + 2
+
+  public static void benchmark46(double x,double y, double z, double w) {
+<span class="pc bpc" id="L332" title="5 of 14 branches missed.">	  if(Math.sqrt(Math.pow(Math.E,(x + z))) &lt; Math.pow(z,x) &amp;&amp; x &gt; 0 &amp;&amp; y &gt; 1 &amp;&amp; z &gt; 1 &amp;&amp; y &lt; 1 &amp;&amp; y &lt; x + 2 &amp;&amp; w == x + 2) {</span>
+<span class="nc" id="L333">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L335">  }</span>
+
+  // e ^ (x + y) == e ^ z 
+  
+  public static void benchmark47(double x,double y,double z) {
+<span class="pc bpc" id="L340" title="1 of 2 branches missed.">	  if(Math.exp(x + y) == Math.exp(z)) {</span>
+<span class="nc" id="L341">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L343">  }</span>
+
+  // x + y != z
+  public static void benchmark48(double x,double y, double z) {
+<span class="fc bfc" id="L347" title="All 2 branches covered.">	  if(x + y != z) {</span>
+<span class="fc" id="L348">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L350">  }</span>
+
+  //x^2 + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; y ^ 2 &amp;&amp; x + y &lt; 50 //556 possible integer solutions
+
+  public static void benchmark49(double x,double y) {
+<span class="pc bpc" id="L355" title="1 of 6 branches missed.">	  if(Math.pow(x,2) + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; Math.pow(y,2) &amp;&amp; x + y &lt; 50) {</span>
+<span class="fc" id="L356">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L358">  }</span>
+
+  //x^2 + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; y ^ 2 &amp;&amp; x + y &lt; 50 &amp;&amp; x = -13 + y //18 possible integer solutions
+
+  public static void benchmark50(double x,double y) {
+<span class="pc bpc" id="L363" title="1 of 8 branches missed.">	  if(Math.pow(x,2) + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; Math.pow(y,2) &amp;&amp; x + y &lt; 50 &amp;&amp; x == -13 + y) {</span>
+<span class="fc" id="L364">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L366">  }</span>
+
+  //x^2 + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; y ^ 2 &amp;&amp; x + y &lt; 50 &amp;&amp; x = -13 + y &amp;&amp; x ^ x &lt; Math.log10(y) //one integer solution
+  public static void benchmark51(double x,double y) {
+<span class="pc bpc" id="L370" title="1 of 8 branches missed.">	  if(Math.pow(x,2) + 3*Math.sqrt(y) &lt; x*y &amp;&amp; x &lt; Math.pow(y,2) &amp;&amp; x + y &lt; 50 &amp;&amp; Math.pow(x,x) &lt; Math.log10(y)) {</span>
+<span class="fc" id="L371">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L373">  }</span>
+
+  //x ^ tan(y) + z &lt; x * Math.atan(z) &amp;&amp; sin(y) + cos(y) + tan(y) &gt;= x - z
+	public static void benchmark52(double x,double y, double z) {
+<span class="fc bfc" id="L377" title="All 4 branches covered.">	  if(Math.pow(x,Math.tan(y)) + z &lt; x * Math.atan(z) &amp;&amp; Math.sin(y) + Math.cos(y) + Math.tan(y) &gt;= x - z) {</span>
+<span class="fc" id="L378">		  System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L380">  }</span>
+
+	//x ^ Math.tan(y) + z &lt; x * Math.atan(z) &amp;&amp; Math.sin(y) + cos(y) + Math.tan(y) &gt;= x - z &amp;&amp; Math.atan(x) + Math.atan(y) &gt; y
+	public static void benchmark53(double x,double y, double z) {
+<span class="fc bfc" id="L384" title="All 6 branches covered.">		if(Math.pow(x,Math.tan(y)) + z &lt; x * Math.atan(z) &amp;&amp; Math.sin(y) + Math.cos(y) + Math.tan(y) &gt;= x - z &amp;&amp; Math.atan(x) + Math.atan(y) &gt; y) {</span>
+<span class="fc" id="L385">			System.out.println(&quot;sucess&quot;);</span>
+	  }
+<span class="fc" id="L387">	}</span>
+
+  //x ^ Math.tan(y) + z &lt; x * Math.atan(z) &amp;&amp; Math.sin(y) + Math.cos(y) + Math.tan(y) &gt;= x - z &amp;&amp; Math.atan(x) + Math.atan(y) &gt; y &amp;&amp; Math.log(x^Math.tan(y)) &lt; Math.log(z)
+	public static void benchmark54(double x,double y, double z) {
+<span class="pc bpc" id="L391" title="5 of 8 branches missed.">		if(Math.pow(x,Math.tan(y)) + z &lt; x * Math.atan(z) &amp;&amp; Math.sin(y) + Math.cos(y) + Math.tan(y) &gt;= x - z &amp;&amp; Math.atan(x) + Math.atan(y) &gt; y &amp;&amp; Math.log(Math.pow(x,Math.tan(y))) &lt; Math.log(z)) {</span>
+<span class="nc" id="L392">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L394">	}</span>
+
+  //x ^ Math.tan(y) + z &lt; x * Math.atan(z) &amp;&amp;  Math.sin(y) + Math.cos(y) + Math.tan(y) &gt;= x - z &amp;&amp;  Math.atan(x) + Math.atan(y) &gt; y &amp;&amp;  Math.log(x^Math.tan(y)) &lt; Math.log(z) &amp;&amp;  Math.sqrt(y+z) &gt; Math.sqrt(x^(x-y))  
+	public static void benchmark55(double x,double y, double z) {
+<span class="pc bpc" id="L398" title="5 of 10 branches missed.">		if(Math.pow(x,Math.tan(y)) + z &lt; x * Math.atan(z) &amp;&amp; Math.sin(y) + Math.cos(y) + Math.tan(y) &gt;= x - z &amp;&amp; Math.atan(x) + Math.atan(y) &gt; y &amp;&amp; Math.log(Math.pow(x,Math.tan(y))) &lt; Math.log(z) &amp;&amp;  Math.sqrt(y+z) &gt; Math.sqrt(Math.pow(x,(x-y)))) {</span>
+<span class="nc" id="L399">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L401">	}</span>
+
+  //x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t)
+	public static void benchmark56(double x,double y, double z,double w, double t) {
+<span class="fc bfc" id="L405" title="All 2 branches covered.">		if(x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t)) {</span>
+<span class="fc" id="L406">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L408">	}</span>
+
+//x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t))
+	public static void benchmark57(double x,double y, double z,double w, double t) {
+<span class="fc bfc" id="L412" title="All 4 branches covered.">		if(x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t))) {</span>
+<span class="fc" id="L413">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L415">	}</span>
+
+  //x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t)) &amp;&amp; Math.tan(w*(x+y)) + Math.sin(t*(y+z)) &gt; Math.asin(x+y+z) + acos(x+y+z) + Math.atan(x+y+z)
+	public static void benchmark58(double x,double y, double z,double w, double t) {
+<span class="fc bfc" id="L419" title="All 6 branches covered.">		if(x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t)) &amp;&amp; Math.tan(w*(x+y)) + Math.sin(t*(y+z)) &gt; Math.asin(x+y+z) + Math.acos(x+y+z) + Math.atan(x+y+z)) {</span>
+<span class="fc" id="L420">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L422">	}</span>
+
+  //x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t))	&amp;&amp; Math.tan(w*(x+y)) + Math.sin(t*(y+z)) &gt; Math.asin(x+y+z) + Math.acos(x+y+z) + Math.atan(x+y+z) &amp;&amp; w = t * 3 / 4
+	public static void benchmark59(double x,double y, double z,double w, double t) {
+<span class="fc bfc" id="L426" title="All 8 branches covered.">		if(x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t)) &amp;&amp; Math.tan(w*(x+y)) + Math.sin(t*(y+z)) &gt; Math.asin(x+y+z) + Math.acos(x+y+z) + Math.atan(x+y+z) &amp;&amp; w == t * 3 / 4) {</span>
+<span class="fc" id="L427">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L429">	}</span>
+  //x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t))	&amp;&amp; Math.tan(w*(x+y)) + Math.sin(t*(y+z)) &gt; Math.asin(x+y+z) + Math.acos(x+y+z) + Math.atan(x+y+z) &amp;&amp; w = t * 3 / 4 &amp;&amp; x &lt; 2y - 3z
+	public static void benchmark60(double x,double y, double z,double w, double t) {
+<span class="pc bpc" id="L432" title="1 of 10 branches missed.">		if(x * y + Math.atan(z) * Math.sin(w*t) &gt; x/y + z + Math.tan(w+t) &amp;&amp; Math.pow(Math.log10(x),Math.log10(y)) &lt;= Math.pow(Math.log10(z+w+t),Math.tan(w*t)) &amp;&amp; Math.tan(w*(x+y)) + Math.sin(t*(y+z)) &gt; Math.asin(x+y+z) + Math.acos(x+y+z) + Math.atan(x+y+z) &amp;&amp; w == t * 3 / 4 &amp;&amp; x &lt; 2*y - 3*z) {</span>
+<span class="fc" id="L433">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L435">	}</span>
+
+  //x + y &gt; z / w &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,6) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y
+	public static void benchmark61(double x,double y, double z,double w) {
+<span class="fc bfc" id="L439" title="All 10 branches covered.">		if(x + y &gt; z / w &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,6) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y) {</span>
+<span class="fc" id="L440">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L442">	}</span>
+
+  //x + y &gt; z / w &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,6) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z)
+	public static void benchmark62(double x,double y, double z,double w) {
+<span class="pc bpc" id="L446" title="1 of 12 branches missed.">		if(x + y &gt; z / w &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,6) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z)) {</span>
+<span class="fc" id="L447">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L449">	}</span>
+
+  //x + y &gt; z / w &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,6) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z)
+	public static void benchmark63(double x,double y, double z,double w, double t) {
+<span class="pc bpc" id="L453" title="1 of 16 branches missed.">		if(x + y &gt; z / w &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,6) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z)) {</span>
+<span class="fc" id="L454">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L456">	}</span>
+
+  //x + y &gt; z / (w + t) &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp;	x * (t + y) &gt; Math.log(w*z*3) 
+
+	public static void benchmark64(double x,double y, double z,double w, double t) {
+<span class="pc bpc" id="L461" title="2 of 18 branches missed.">		if(x + y &gt; z / (w + t) &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp;	x * (t + y) &gt; Math.log(w*z*3)) {</span>
+<span class="fc" id="L462">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L464">	}</span>
+  //x + y &gt; z / (w + t) &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3)
+	public static void benchmark65(double x,double y, double z,double w, double t) {
+<span class="pc bpc" id="L467" title="1 of 18 branches missed.">		if(x + y &gt; z / (w + t) &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3)) {</span>
+<span class="fc" id="L468">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L470">	}</span>
+
+  //x + y &gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) &gt; Math.cos(y)
+	public static void benchmark66(double x,double y, double z,double w, double t) {
+<span class="pc bpc" id="L474" title="1 of 20 branches missed.">		if(x + y &gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) &gt; Math.cos(y)) {</span>
+<span class="fc" id="L475">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L477">	}</span>
+
+  //x - y + Math.tan(v)&gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x-t) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t)*Math.cos(v) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) * Math.sin(v) &gt; Math.cos(y)
+	public static void benchmark67(double x,double y, double z,double w, double t, double v) {
+<span class="pc bpc" id="L481" title="9 of 20 branches missed.">		if(x - y + Math.tan(v)&gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x-t) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t)*Math.cos(v) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) * Math.sin(v) &gt; Math.cos(y)) {</span>
+<span class="nc" id="L482">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L484">	}</span>
+
+  //x - y + Math.tan(v)&gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x-t) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t)*Math.cos(v) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) * Math.sin(v) &gt; Math.cos(y)
+	public static void benchmark68(double x,double y, double z,double w, double t, double v) {
+<span class="pc bpc" id="L488" title="6 of 20 branches missed.">		if(x - y + Math.tan(v)&gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x-t) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t)*Math.cos(v) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) * Math.sin(v) &gt; Math.cos(y)) {</span>
+<span class="nc" id="L489">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L491">	}</span>
+
+  //x - y + Math.tan(v)&gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x-t) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t)*Math.cos(v) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) * Math.sin(v) &gt; Math.cos(y) &amp;&amp; Math.sin(x*y) + Math.sin(z*w) + Math.sin(t*v) &lt; Math.cos(x*y) + Math.cos(z*w) + Math.cos(t*v)
+	public static void benchmark69(double x,double y, double z,double w, double t, double v) {
+<span class="pc bpc" id="L495" title="4 of 22 branches missed.">		if(x - y + Math.tan(v)&gt; (z+ t) / (w + t) &amp;&amp; Math.sqrt(x-t) &gt; z / y &amp;&amp; Math.log(x*y) &gt; Math.log(t+w+z) &amp;&amp; z*2 + w*3 + x*7 &lt; Math.pow(y,t)*Math.cos(v) &amp;&amp; z + w &gt; x + y &amp;&amp; w &lt; x/y &amp;&amp; x &gt; (w+y-z) &amp;&amp; Math.log10(t*x) &lt; Math.sqrt(w*y*z) &amp;&amp; x * Math.cos(t + y) &gt; Math.log(w*z*3) &amp;&amp; Math.cos(t) * Math.sin(v) &gt; Math.cos(y) &amp;&amp; Math.sin(x*y) + Math.sin(z*w) + Math.sin(t*v) &lt; Math.cos(x*y) + Math.cos(z*w) + Math.cos(t*v)) {</span>
+<span class="nc" id="L496">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L498">	}</span>
+
+  //Math.sin(a) &gt; Math.sin(b) &gt; Math.sin(c) &gt; Math.sin(d) &gt; Math.sin(e) &gt; Math.sin(f) &gt; Math.sin(g) &gt; Math.sin(h) &gt; Math.sin(i) &gt; Math.sin(j) &gt; Math.sin(k) &gt; Math.sin(l) &gt; Math.sin(m) &gt; Math.sin(n) &gt; Math.sin(o) &gt; Math.sin(p) &gt; Math.sin(q) &gt; Math.sin(r) &gt; Math.sin(s) &gt; Math.sin(t) &gt; Math.sin(u) &gt; Math.sin(v) &gt; Math.sin(x) &gt; Math.sin(z)
+	public static void benchmark70(double a,double b, double c,double d, double e, double f, double g, double h, double i, double j, double k, double l, double m, double n, double o, double p, double q, double r, double s, double t, double u, double v, double x, double z) {
+<span class="pc bpc" id="L502" title="27 of 46 branches missed.">		if(Math.sin(a) &gt; Math.sin(b) &amp;&amp; Math.sin(b) &gt; Math.sin(c) &amp;&amp; Math.sin(c) &gt; Math.sin(d) &amp;&amp; Math.sin(d) &gt; Math.sin(e) &amp;&amp; Math.sin(e) &gt; Math.sin(f) &amp;&amp; Math.sin(f) &gt; Math.sin(g) &amp;&amp; Math.sin(g) &gt; Math.sin(h) &amp;&amp; Math.sin(h) &gt; Math.sin(i) &amp;&amp; Math.sin(i) &gt; Math.sin(j) &amp;&amp; Math.sin(j) &gt; Math.sin(k) &amp;&amp; Math.sin(k) &gt; Math.sin(l) &amp;&amp; Math.sin(l) &gt; Math.sin(m) &amp;&amp; Math.sin(m) &gt; Math.sin(n) &amp;&amp; Math.sin(n) &gt; Math.sin(o) &amp;&amp; Math.sin(o) &gt; Math.sin(p) &amp;&amp; Math.sin(p) &gt; Math.sin(q) &amp;&amp; Math.sin(q) &gt; Math.sin(r) &amp;&amp; Math.sin(r) &gt; Math.sin(s) &amp;&amp; Math.sin(s) &gt; Math.sin(t) &amp;&amp; Math.sin(t) &gt; Math.sin(u) &amp;&amp; Math.sin(u) &gt; Math.sin(v) &amp;&amp; Math.sin(v) &gt; Math.sin(x) &amp;&amp; Math.sin(x) &gt; Math.sin(z)) {</span>
+<span class="nc" id="L503">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L505">	}</span>
+
+	public static void benchmark71(double a,double b, double c,double d, double e, double f, double g, double h, double i, double j, double k, double l) {
+<span class="pc bpc" id="L508" title="3 of 22 branches missed.">		if(Math.sin(a) &gt; Math.sin(b) &amp;&amp; Math.sin(b) &gt; Math.sin(c) &amp;&amp; Math.sin(c) &gt; Math.sin(d) &amp;&amp; Math.sin(d) &gt; Math.sin(e) &amp;&amp; Math.sin(e) &gt; Math.sin(f) &amp;&amp; Math.sin(f) &gt; Math.sin(g) &amp;&amp; Math.sin(g) &gt; Math.sin(h) &amp;&amp; Math.sin(h) &gt; Math.sin(i) &amp;&amp; Math.sin(i) &gt; Math.sin(j) &amp;&amp; Math.sin(j) &gt; Math.sin(k) &amp;&amp; Math.sin(k) &gt; Math.sin(l) ) { </span>
+<span class="nc" id="L509">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L511">	}</span>
+
+	public static void benchmark72(double a,double b, double c,double d, double e, double f, double g) {
+<span class="fc bfc" id="L514" title="All 12 branches covered.">		if(Math.sin(a) &gt; Math.sin(b) &amp;&amp; Math.sin(b) &gt; Math.sin(c) &amp;&amp; Math.sin(c) &gt; Math.sin(d) &amp;&amp; Math.sin(d) &gt; Math.sin(e) &amp;&amp; Math.sin(e) &gt; Math.sin(f) &amp;&amp; Math.sin(f) &gt; Math.sin(g)) { </span>
+<span class="fc" id="L515">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L517">	}</span>
+
+	public static void benchmark73(double a,double b, double c,double d, double e, double f, double g, double h, double i, double j) {
+<span class="fc bfc" id="L520" title="All 18 branches covered.">		if(Math.sin(a) &gt; Math.sin(b) &amp;&amp; Math.sin(b) &gt; Math.sin(c) &amp;&amp; Math.sin(c) &gt; Math.sin(d) &amp;&amp; Math.sin(d) &gt; Math.sin(e) &amp;&amp; Math.sin(e) &gt; Math.sin(f) &amp;&amp; Math.sin(f) &gt; Math.sin(g) &amp;&amp; Math.sin(g) &gt; Math.sin(h) &amp;&amp; Math.sin(h) &gt; Math.sin(i) &amp;&amp; Math.sin(i) &gt; Math.sin(j)) {</span>
+<span class="fc" id="L521">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L523">	}</span>
+
+	public static void benchmark74(double a,double b, double c,double d, double e, double f, double g, double h) {
+<span class="fc bfc" id="L526" title="All 14 branches covered.">		if(Math.sin(a) &gt; Math.sin(b) &amp;&amp; Math.sin(b) &gt; Math.sin(c) &amp;&amp; Math.sin(c) &gt; Math.sin(d) &amp;&amp; Math.sin(d) &gt; Math.sin(e) &amp;&amp; Math.sin(e) &gt; Math.sin(f) &amp;&amp; Math.sin(f) &gt; Math.sin(g) &amp;&amp; Math.sin(g) &gt; Math.sin(h)) {</span>
+<span class="fc" id="L527">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L529">	}</span>
+
+	public static void benchmark75(double a,double b, double c,double d, double e, double f, double g, double h, double i) {
+<span class="fc bfc" id="L532" title="All 16 branches covered.">		if(Math.sin(a) &gt; Math.sin(b) &amp;&amp; Math.sin(b) &gt; Math.sin(c) &amp;&amp; Math.sin(c) &gt; Math.sin(d) &amp;&amp; Math.sin(d) &gt; Math.sin(e) &amp;&amp; Math.sin(e) &gt; Math.sin(f) &amp;&amp; Math.sin(f) &gt; Math.sin(g) &amp;&amp; Math.sin(g) &gt; Math.sin(h) &amp;&amp; Math.sin(h) &gt; Math.sin(i)) {</span>
+<span class="fc" id="L533">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L535">	}</span>
+
+	public static void benchmark76(double a,double b, double c,double d, double e, double f, double g, double h, double i) {
+<span class="fc bfc" id="L538" title="All 16 branches covered.">		if(a &gt; b &amp;&amp; b &gt; c &amp;&amp; c &gt; d &amp;&amp; d &gt; e &amp;&amp; e &gt; f &amp;&amp; f &gt; g &amp;&amp; g &gt; h &amp;&amp; h &gt; i) {</span>
+<span class="fc" id="L539">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L541">	}</span>
+
+	public static void benchmark77(double a,double b, double c,double d, double e, double f, double g, double h, double i, double j) {
+<span class="fc bfc" id="L544" title="All 18 branches covered.">		if(a &gt; b &amp;&amp; b &gt; c &amp;&amp; c &gt; d &amp;&amp; d &gt; e &amp;&amp; e &gt; f &amp;&amp; f &gt; g &amp;&amp; g &gt; h &amp;&amp; h &gt; i &amp;&amp; i &gt; j) {</span>
+<span class="fc" id="L545">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L547">	}</span>
+
+	//(0.0 == (pow_((($V1*sin_(((($V2*0.017453292519943295)-($V3*0.017453292519943295))+(((((((pow_($V4,2.0)/(sin_(($V5*0.017453292519943295))/cos_(($V5*0.017453292519943295))))/68443.0)*0.0)/$V4)*-1.0)*$V1)/((pow_($V1,2.0)/(sin_(($V5*0.017453292519943295))/cos_(($V5*0.017453292519943295))))/68443.0)))))-($V4*0.0)),2.0)+pow_((($V1*cos_(((($V2*0.017453292519943295)-($V3*0.017453292519943295))+(((((((pow_($V4,2.0)/(sin_(($V5*0.017453292519943295))/cos_(($V5*0.017453292519943295))))/68443.0)*0.0)/$V4)*-1.0)*$V1)/((pow_($V1,2.0)/(sin_(($V5*0.017453292519943295))/cos_(($V5*0.017453292519943295))))/68443.0)))))-($V4*1.0)),2.0)))
+
+	//AND(AND(,($V6 != 0)),($V8 != 0)))
+
+	public static void benchmark78(double a,double b, double c,double d, double e, int f, int g, int h) {
+<span class="pc bpc" id="L554" title="5 of 6 branches missed.">		if((0.0 == (Math.pow(((a*Math.sin(((b*0.017453292519943295 - c*0.017453292519943295)+(((((((Math.pow(d,2.0)/(Math.sin(e*0.017453292519943295)/Math.cos(e*0.017453292519943295)))/68443.0)*0.0)/d)*-1.0)*a)/((Math.pow(a,2.0)/(Math.sin((e*0.017453292519943295))/Math.cos((e*0.017453292519943295))))/68443.0)))))-(d*0.0)),2.0)+Math.pow(((a*Math.cos((((b*0.017453292519943295)-(c*0.017453292519943295))+(((((((Math.pow(d,2.0)/(Math.sin((e*0.017453292519943295))/Math.cos((e*0.017453292519943295))))/68443.0)*0.0)/d)*-1.0)*a)/((Math.pow(a,2.0)/(Math.sin((e*0.017453292519943295))/Math.cos((e*0.017453292519943295))))/68443.0)))))-d*1.0),2.0))) &amp;&amp; f != 0 &amp;&amp; h != 0) {</span>
+<span class="nc" id="L555">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L557">	}</span>
+
+//AND((0.0 == (pow_((($V84*sin_(((0.017453292519943295*$V85)-(0.017453292519943295*$V86))))-(0.0*$V87)),2.0)+pow_(($V84*cos_((((0.017453292519943295*$V85)-(0.017453292519943295*$V86))+0.0))),2.0))),($V82 != 0))
+
+	public static void benchmark79(double a,double b, double c,double d, int e) {
+<span class="pc bpc" id="L562" title="3 of 4 branches missed.">		if((0.0 == (Math.pow(((a*Math.sin(((0.017453292519943295*b)-(0.017453292519943295*c))))-(0.0*d)),2.0)+ Math.pow((a*Math.cos((((0.017453292519943295*b)-(0.017453292519943295*c))+0.0))),2.0))) &amp;&amp; e != 0) {</span>
+<span class="nc" id="L563">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L565">	}</span>
+
+  //(1.5 - x1 * (1 - x2)) == 0
+	public static void benchmark80(double a,double b) {
+<span class="pc bpc" id="L569" title="1 of 2 branches missed.">		if((1.5 - a * (1 - b)) == 0) {</span>
+<span class="nc" id="L570">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L572">	}</span>
+
+  //(-13 + x1 + ((5 - x2) * x2 - 2) * x2) + (-29 + x1 + ((x2 + 1) * x2 - 14) * x2) == 0
+	public static void benchmark81(double a,double b) {
+<span class="fc bfc" id="L576" title="All 2 branches covered.">		if((-13 + a + ((5 - b) * b - 2) * b) + (-29 + a + ((b + 1) * b - 14) * b) == 0) {</span>
+<span class="fc" id="L577">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L579">	}</span>
+
+  // (Math.Pow(10, 4) * x1 * x2 - 1) == 0 &amp;&amp; (Math.Pow(Math.E, -x1) + Math.Pow(Math.E, -x2) - 1.0001) == 0
+	public static void benchmark82(double a,double b) {
+<span class="pc bpc" id="L583" title="1 of 4 branches missed.">		if((Math.pow(10, 4) * a * b - 1) == 0 &amp;&amp; (Math.pow(Math.E, -a) + Math.pow(Math.E, -b) - 1.0001) == 0) {</span>
+<span class="nc" id="L584">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L586">	}</span>
+
+  // Math.Pow((1 - x1), 2) + 100 * (Math.Pow((x2 - x1 * x1), 2)) == 0
+	public static void benchmark83(double a,double b) {
+<span class="pc bpc" id="L590" title="1 of 2 branches missed.">		if(Math.pow((1 - a), 2) + 100 * (Math.pow((b - a * a), 2)) == 0) {</span>
+<span class="nc" id="L591">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L593">	}</span>
+
+  //(10 * (x2 - x1 * x1)) == 0 &amp;&amp; (1 - x1) == 0 &amp;&amp; (Math.sqrt(90) * (x4 - x3 * x3)) == 0 &amp;&amp; (1 - x3) == 0 &amp;&amp; (Math.sqrt(10) * (x2 + x4 - 2)) == 0 &amp;&amp; (Math.Pow(10, -0.5) * (x2 - x4)) == 0
+
+	public static void benchmark84(double a,double b, double c, double d) {
+<span class="pc bpc" id="L598" title="2 of 12 branches missed.">		if((10 * (b - a * a)) == 0 &amp;&amp; (1 - a) == 0 &amp;&amp; (Math.sqrt(90) * (d - c * c)) == 0 &amp;&amp; (1 - c) == 0 &amp;&amp; (Math.sqrt(10) * (b + d - 2)) == 0 &amp;&amp; (Math.pow(10, -0.5) * (b - d)) == 0) {</span>
+<span class="fc" id="L599">			System.out.println(&quot;sucess&quot;);</span>
+		}
+<span class="fc" id="L601">	}</span>
+	
+	public static void benchmark91(double x, double y){
+<span class="pc bpc" id="L604" title="3 of 4 branches missed.">	  if(Math.sin(x) == -Math.sin(y) &amp;&amp; Math.sin(x) &gt; 0)</span>
+<span class="nc" id="L605">	    System.out.println(&quot;sucess&quot;);</span>
+<span class="fc" id="L606">	}</span>
+
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

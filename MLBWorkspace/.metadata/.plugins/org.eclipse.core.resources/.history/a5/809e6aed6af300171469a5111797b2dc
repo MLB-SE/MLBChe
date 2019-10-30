@@ -1,0 +1,45 @@
+import org.apache.commons.math3.util.FastMath;
+
+public class program {
+	public  double newsqrt(double c){
+		if(c<0) return Double.NaN;
+		if(c==0) return 0;
+		double err = 1e-14;
+		double x = c;
+		while(Math.abs(x-c/x)>err){
+			x = (x+c/x)/2.0;
+		}
+		return x;
+	}
+
+	public boolean problem01(double x, double y){
+		if(x + y < 50 && Math.pow(x,x) < Math.log10(y))
+			return true;
+	    else return false;
+	}
+	public static void example(double x, double y){
+		 if((1+FastMath.acos(x)) < FastMath.asin(x)) {
+		     System.out.println("Solved Problem Easy");
+		 }
+		
+		 double a = Math.pow(x,y) - Math.pow(y,x);
+		 double b = Math.exp(y) - Math.exp(x);
+		 double c = Math.pow(x, 2);
+		 if( b>0 && a>b && y < c) {
+	          System.out.println("Solved Problem Hard");
+	     }
+		 
+		//x^2 + 3*Math.sqrt(y) < x*y && x < y ^ 2 && x + y < 50 && x = -13 + y && x < log10(y) 
+		 if(x*x + 3*newsqrt(y) < x*y && x < Math.pow(y,2))
+			 if(problem01(x,y) && x == -13+y )
+			 System.out.println("Solved Problem withFunctionCall");
+
+	}
+	public static void main(String[] args){
+		program test = new program();
+		if(args.length < 2) return;
+		double pm1 = Double.parseDouble(args[0]);
+		double pm2 = Double.parseDouble(args[1]);
+		test.example(pm1,pm2);
+	}
+}

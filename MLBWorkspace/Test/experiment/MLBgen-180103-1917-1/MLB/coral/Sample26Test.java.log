@@ -1,0 +1,78 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample26.main()
+
+====================================================== search started: 1/3/18 7:18 PM
+method name benchmark26(DDDDD)V
+method name benchmark26(DDDDD)V
+Begin Solving...
+Begin Solving...
+0.8671295681969843
+	UnSolved
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.5958206076677477
+	UnSolved
+Begin Solving...
+Begin Solving...
+constraint # = 3
+( sin (((w_9_SYMREAL[-68.59512267311163] * CONST_2.0) + v_10_SYMREAL[-100.0])) - CONST_1.0) == CONST_0.0 &&
+( cos (((y_7_SYMREAL[-100.0] * CONST_2.0) + v_10_SYMREAL[-100.0])) + CONST_1.0) != CONST_0.0 &&
+ sin ( cos ((x_6_SYMREAL[100.0] * y_7_SYMREAL[-100.0]))) <  cos ( sin ((x_6_SYMREAL[100.0] * z_8_SYMREAL[-75.3394765723472])))
+************3##################**********************
+
+====================================================== error 1
+gov.nasa.jpf.vm.NoUncaughtExceptionsProperty
+java.lang.ArithmeticException: div by 0
+	at coral.tests.JPFBenchmark.benchmark26(JPFBenchmark.java:191)
+	at coral.tests.samples.Sample26.main(Sample26.java:9)
+
+
+====================================================== snapshot #1
+thread java.lang.Thread:{id:0,name:main,status:RUNNING,priority:5,isDaemon:false,lockCount:0,suspendCount:0}
+  call stack:
+	at coral.tests.JPFBenchmark.benchmark26(JPFBenchmark.java:191)
+	at coral.tests.samples.Sample26.main(Sample26.java:9)
+
+Begin Solving...
+0.6131516904861631
+	UnSolved
+
+====================================================== results
+error #1: gov.nasa.jpf.vm.NoUncaughtExceptionsProperty "java.lang.ArithmeticException: div by 0  at coral...."
+
+====================================================== statistics
+elapsed time:       00:00:01
+states:             new=9,visited=0,backtracked=9,end=3
+search:             maxDepth=5,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=4
+heap:               new=574,released=31,maxLive=554,gcCycles=4
+instructions:       10078
+max memory:         106MB
+loaded code:        classes=61,methods=1293
+
+====================================================== search finished: 1/3/18 7:18 PM
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark26(-13.807257371836485,-30.706487535763543,-81.07609807942147,0,0); 
+coral.tests.JPFBenchmark.benchmark26(-7.6362809882606175,-71.63570317318106,-83.83414625176924,0,0); 
+coral.tests.JPFBenchmark.benchmark26(-50.11598142514806,-44.36698482080299,-67.55414365169975,0,0); 
+coral.tests.JPFBenchmark.benchmark26(52.7242240087171,16.894441878627205,-17.075976186936572,0,-62.724224565789385); 
+coral.tests.JPFBenchmark.benchmark26(-51.7738953541661,-1.9785815738824226,97.79271513977429,-92.2737166628454,17.077919665099103); 
+coral.tests.JPFBenchmark.benchmark26(52.891479221816724,-3.5759710592424767,25.074047324535044,-23.869710076598707,28.674370071875643); 
+coral.tests.JPFBenchmark.benchmark26(99.31572336559209,57.041623923756305,33.973826995310624,-58.225559145508306,19.316082775447388); 
+coral.tests.JPFBenchmark.benchmark26(-70.29911583620495,-64.28503173668649,86.08293834121952,-53.599808135620954,-80.91982461326386); 
+coral.tests.JPFBenchmark.benchmark26(100.0,-100.0,-75.3394765723472,-68.59512267311163,-100.0); 
+coral.tests.JPFBenchmark.benchmark26(100.0,-61.63053606849634,-100.0,0,-62.09289453717235); 
+

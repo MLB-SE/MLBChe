@@ -1,0 +1,86 @@
+[WARNING] unknown classpath element: /home/mlb/MLBWorkspace/jpf-nhandler/build/jpf-nhandler-classes.jar
+Running Symbolic PathFinder ...
+symbolic.dp=CSP
+symbolic.mltype=2
+symbolic.mlpm=3000
+symbolic.complex=2
+symbolic.strategy=classical
+JavaPathfinder core system v8.0 (rev ${version}) - (C) 2005-2014 United States Government. All rights reserved.
+
+
+====================================================== system under test
+coral.tests.samples.Sample75.main()
+
+====================================================== search started: 1/3/18 7:20 PM
+method name benchmark75(DDDDDDDDD)V
+method name benchmark75(DDDDDDDDD)V
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.5460957305428363
+	UnSolved
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+Begin Solving...
+0.5318292406203186
+	UnSolved
+Begin Solving...
+sucess
+
+====================================================== results
+no errors detected
+
+====================================================== statistics
+elapsed time:       00:00:01
+states:             new=23,visited=0,backtracked=23,end=15
+search:             maxDepth=9,constraints=0
+choice generators:  thread=1 (signal=0,lock=1,sharedRef=0,threadApi=0,reschedule=0), data=8
+heap:               new=558,released=139,maxLive=554,gcCycles=16
+instructions:       10170
+max memory:         106MB
+loaded code:        classes=57,methods=1263
+
+====================================================== search finished: 1/3/18 7:20 PM
+====================================================== Method Summaries
+coral.tests.JPFBenchmark.benchmark75(-10.115124969755243,26.41409647235939,0,0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(74.02168372876861,-13.942910571745603,0,0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(20.488713419314237,79.32708204606647,0,0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(45.07062993312337,16.484305537112448,70.55824370820815,0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(39.12798517220193,-100.0,-100.0,0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-3.123839219940706,-59.51413380798309,-6.665432132231871,0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-91.41848746661606,87.89550224664623,-8.93165130657296,-92.15932688632564,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-100.0,-75.15149788526857,100.0,100.0,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(71.7403646500913,53.106657907656086,-47.17311185679867,97.45141388378232,0,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-35.56334008490485,8.541851265560766,-54.1917510021936,-26.67526854860924,-68.04442369815322,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-92.95416569389391,-7.391106459419028,-7.527382265118943,-70.8179760272663,-14.26930826265002,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(25.61566243731805,-25.203186220929936,-125.92262374988285,98.15363451446407,79.94023470593616,0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(32.15124584519155,-47.380663794494495,75.00642734158423,60.10125499281033,-13.038481253405813,14.623222218906239,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(39.73708665863043,82.45303489038821,-80.92596373740201,-50.448687742838594,100.0,100.0,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-29.546158352219436,-10.492923391120385,-56.74548601718197,93.95174293907732,-1.1461163353060613,98.81746946237885,0,0,0); 
+coral.tests.JPFBenchmark.benchmark75(71.6719831568401,52.981510640584844,25.41432809634381,50.031485711096735,-65.04209567192271,10.95936628174725,3.8977662054492583,0,0); 
+coral.tests.JPFBenchmark.benchmark75(-80.16680159934499,-93.83152097804525,-18.617602988281902,-197.3058160810064,-1.666206658357254,-77.02644085371688,124.14288745170714,0,0); 
+coral.tests.JPFBenchmark.benchmark75(64.24976990759012,-4.99641556500579,-124.39298474673886,50.92951810770542,-59.89535091502967,28.128903953588065,43.95372273736048,0,0); 
+coral.tests.JPFBenchmark.benchmark75(13.703460884813978,-49.13137484389132,-10.264616048234359,50.17503159413093,43.555454875850614,-134.32301963649866,42.822570569449965,-81.78757996482622,0); 
+coral.tests.JPFBenchmark.benchmark75(13.88324722357892,-17.673217657280276,63.83718337404015,-68.26571044280809,-100.0,84.68250334667344,100.0,100.0,0); 
+coral.tests.JPFBenchmark.benchmark75(-10.941254700694028,13.917012086215585,-88.07264401577122,85.43896371971789,-8.713366864604936,80.89857076109695,61.7026859200318,-1.623356493134608,0); 
+coral.tests.JPFBenchmark.benchmark75(70.0325960303025,63.01482564679017,-81.74476901156041,-69.29444718302139,79.29114877891564,85.64374464127233,-88.9887076867047,67.47775373155821,-69.91723727052326); 
+coral.tests.JPFBenchmark.benchmark75(-137.06823464948388,-110.94848313487914,-10.725472186487648,-167.74172853853926,51.19103091319937,-9.240465348455242,-352.17409335520364,80.46450850789131,17.623767556140137); 
+coral.tests.JPFBenchmark.benchmark75(20.28150634642093,7.679969219073158,-5.006179377459077,7.457783333386704,-29.436519736285163,88.84056904384754,19.57144609680408,-50.01495725730257,34.564751100256174); 
+
