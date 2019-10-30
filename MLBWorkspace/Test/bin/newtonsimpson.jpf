@@ -1,0 +1,12 @@
+target = NewtonSimpson
+classpath = /home/lyra/0801/Test/bin
+
+
+symbolic.method = NewtonSimpson.newton(sym#sym)
+symbolic.dp = CSP
+symbolic.mlpm = 3000
+
+search.depth_limit =10
+
+@using = jpf-nhandler
+nhandler.delegateUnhandledNative = true
